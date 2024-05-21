@@ -1,59 +1,66 @@
 .navbar {
     width: 100%;
     height: 76px;
+    padding: 0 1rem;
     box-shadow: 0 1px 3px -2px black;
     background-color: #069C56;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.freteGratis{
+.freteGratis {
     height: 25px;
     background-color: #006B3D;
 }
 
-.freteGratis p{
+.freteGratis p {
     color: #fff;
     font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-.right-side{
-    margin-top: auto;
-    margin-bottom: auto;
+.right-side {
+    width: 274px;
     align-items: center;
+    justify-content: space-between;
     display: flex;
 }
 
-.cart-icon{
-    color: #fff;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.heart{
+.cart-icon {
     color: #fff;
     cursor: pointer;
 }
 
-.welcome{
+.heart,
+.book {
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.welcome {
     height: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-bottom: 7px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.account-icon {
     color: #fff;
     cursor: pointer;
 }
 
-.account-icon{
-    margin-left: 20px;
-    color: #fff;
-    cursor: pointer;
+.container-logo {
+    width: 33%;
 }
 
 .nav-logo {
-    margin-top: auto;
-    margin-bottom: auto;
+    text-align: center;
     align-items: center;
-    width: 90px;
     height: 60px;
     font-family: 'Inter';
     font-style: italic;
@@ -65,10 +72,9 @@
 }
 
 .search-box {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-right: 63px;
     align-items: center;
-    width: 40%;
+    width: 33%;
     height: 40px;
     display: flex;
     background: transparent;
@@ -91,7 +97,7 @@
 }
 
 .submenu-container {
-    position: relative; /* Adicione esta linha */
+    position: relative;
     cursor: pointer;
     display: flex;
     list-style: center;
@@ -99,11 +105,15 @@
 }
 
 .submenu {
-    position: absolute; /* Altere para absolute */
-    top: 100%; /* Posicione abaixo do ícone */
-    list-style: none; /*tira os pontinhos */
+    position: absolute;
+    /* Altere para absolute */
+    top: 100%;
+    /* Posicione abaixo do ícone */
+    list-style: none;
+    /*tira os pontinhos */
     padding: 0;
-    margin: 0;
+    margin: 1rem;
+    width: 100px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -111,16 +121,18 @@
 }
 
 .submenu li span {
-    margin-left: 5px; 
+    margin-left: 5px;
 }
 
 .submenu li {
     align-items: center;
-    padding: 10px 20px; /* Espaçamento interno dos itens do submenu */
-    transition: background-color 0.3s ease; /* Efeito de transição suave ao passar o mouse */
+    padding: 10px 20px;
+    /* Espaçamento interno dos itens do submenu */
+    transition: background-color 0.3s ease;
+    /* Efeito de transição suave ao passar o mouse */
 }
 
 .submenu li:hover {
-    background-color: #f0f0f0; /* Cor de fundo quando o item do submenu é destacado */
+    background-color: #f0f0f0;
+    /* Cor de fundo quando o item do submenu é destacado */
 }
-

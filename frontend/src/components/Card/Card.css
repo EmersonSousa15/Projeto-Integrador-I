@@ -1,0 +1,80 @@
+.book-container{
+    width: 220px;
+    height: 411px;
+    background-color: white;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.book-img{
+    width: 180px;
+    height: 251.46px;
+    cursor: pointer;
+}
+
+.options{
+    background-color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.buy-book{
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #FF681E;
+    background-color: transparent;
+    border: 1px;
+    border-style: solid;
+    color:#FF681E
+}
+
+.heart-book{
+    margin-left: 2px;
+    color: #FF681E;
+    cursor: pointer;
+}
+
+.heart-filled{
+    margin-left: 2px;
+    color: #FF681E;
+    cursor: pointer;
+}
+
+.book-info{
+    left: 22.27%;
+    right: 22.73%;
+    top: 68.13%;
+    bottom: 21.17%;
+}
+
+.book-info h1{
+    left: 22.27%;
+    right: 22.73%;
+    top: 68.13%;
+    bottom: 25.79%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    color: #0B0B0B;
+}
+
+.book-info h2{
+    left: 35%;
+    right: 35%;
+    top: 72.75%;
+    bottom: 21.17%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+
+    color: #676767;
+
+}

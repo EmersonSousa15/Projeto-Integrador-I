@@ -1,6 +1,12 @@
+import React from "react";
+import NavBar from "../../components/NavBar/NavBar";
+
 export const Login = () => {
   return (
-    <div>Login</div>
+    <div className="inicio-contaienr">
+      <NavBar/>
+    </div>
+    
   )
 }
 

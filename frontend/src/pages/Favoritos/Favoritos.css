@@ -1,0 +1,12 @@
+.inicio-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+}

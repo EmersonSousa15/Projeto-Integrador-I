@@ -1,80 +1,160 @@
-.book-container{
-    width: 220px;
-    height: 411px;
-    background-color: white;
-    align-items: center;
-    padding: 10px 10px;
+/* Container principal dos cards */
+.cards-container {
+    display: flex;
+    justify-content: center; /* Centraliza os cards horizontalmente */
 }
 
-.book-img{
-    width: 180px;
-    height: 251.46px;
+/* Estilo dos cards */
+.book-container {
+    width: 220px; /* Reduz a largura do card */
+    height: 411px; /* Reduz a altura do card */
+    background-color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s; /* Adiciona transição para suavizar o efeito de sombra */
+}
+
+.book-container:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Adiciona o efeito de drop shadow */
+}
+
+/* Estilo da imagem do card */
+.book-img {
+    width: 100%; /* Largura da imagem ajustada para 100% do contêiner */
+    height: auto; /* Mantém a proporção da altura da imagem */
+    max-width: 196px; /* Define a largura máxima da imagem */
     cursor: pointer;
 }
 
-.options{
+/* Container de opções (botões) */
+.options {
     background-color: white;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
-.buy-book{
-    width: 120px;
-    height: 40px;
+/* Estilo do botão de comprar */
+.buy-book.red {
+    font-family: 'Inter', sans-serif;
+    width: 120px; /* Aumenta a largura do botão */
+    height: 36px; /* Aumenta a altura do botão */
+    font-style: italic;
     border-radius: 10px;
-    border-color: #FF681E;
+    border: 1px solid #D3212C;
     background-color: transparent;
-    border: 1px;
-    border-style: solid;
-    color:#FF681E
+    color: #D3212C;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adiciona transição */
 }
 
-.heart-book{
-    margin-left: 2px;
+.buy-book.red:hover,
+.book-container:hover .buy-book.red {
+    background-color: #D3212C;
+    color: white;
+}
+
+/* Estilo do ícone de coração vazio */
+.heart-book.red {
+    margin-left: 8px;
+    font-size: 20px; /* Aumenta o tamanho do ícone */
+    color: #D3212C;
+    cursor: pointer;
+}
+
+.heart-book.red:hover,
+.book-container:hover .heart-book.red {
+    color: #D3212C;
+}
+
+/* Estilo do ícone de coração cheio */
+.heart-filled.red {
+    margin-left: 8px;
+    font-size: 20px; /* Aumenta o tamanho do ícone */
+    color: #D3212C;
+    cursor: pointer;
+}
+
+.heart-filled.red:hover,
+.book-container:hover .heart-filled.red {
+    color: #D3212C;
+}
+
+/* Estilo do botão de comprar */
+.buy-book.orange {
+    font-family: 'Inter', sans-serif;
+    width: 120px; /* Aumenta a largura do botão */
+    height: 36px; /* Aumenta a altura do botão */
+    font-style: italic;
+    border-radius: 10px;
+    border: 1px solid #FF681E;
+    background-color: transparent;
+    color: #FF681E;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Adiciona transição */
+}
+
+.buy-book.orange:hover,
+.book-container:hover .buy-book.orange {
+    background-color: #FF681E;
+    color: white;
+}
+
+/* Estilo do ícone de coração vazio */
+.heart-book.orange {
+    margin-left: 8px;
+    font-size: 20px; /* Aumenta o tamanho do ícone */
     color: #FF681E;
     cursor: pointer;
 }
 
-.heart-filled{
-    margin-left: 2px;
+.heart-book.orange:hover,
+.book-container:hover .heart-book.orange {
+    color: #FF681E;
+}
+
+/* Estilo do ícone de coração cheio */
+.heart-filled.orange {
+    margin-left: 8px;
+    font-size: 20px; /* Aumenta o tamanho do ícone */
     color: #FF681E;
     cursor: pointer;
 }
 
-.book-info{
-    left: 22.27%;
-    right: 22.73%;
-    top: 68.13%;
-    bottom: 21.17%;
+.heart-filled.orange:hover,
+.book-container:hover .heart-filled.orange {
+    color: FF681E;
 }
 
-.book-info h1{
-    left: 22.27%;
-    right: 22.73%;
-    top: 68.13%;
-    bottom: 25.79%;
-    font-family: 'Inter';
+/* Estilo das informações do livro */
+.book-info {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.book-info h1 {
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 16px; /* Aumenta o tamanho do texto */
+    line-height: 20px;
     text-align: center;
     color: #0B0B0B;
 }
 
-.book-info h2{
-    left: 35%;
-    right: 35%;
-    top: 72.75%;
-    bottom: 21.17%;
-    font-family: 'Inter';
+.book-info h2 {
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 25px;
+    font-size: 14px; /* Aumenta o tamanho do texto */
+    line-height: 18px;
     text-align: center;
-
     color: #676767;
+}
 
+/* Novo estilo para o botão "Comprar" quando o card está em hover */
+.book-container:hover .buy-book {
+    background-color: #FF681E;
+    color: white;
 }

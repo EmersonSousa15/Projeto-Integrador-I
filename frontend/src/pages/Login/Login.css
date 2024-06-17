@@ -1,4 +1,25 @@
 .inicio-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+ .banner {
+    top: 286px;
+    width: auto;
+}
+
+.filmes-image {
+    top: 68.13%;
+    bottom: 21.17%;
+    top: 0; /* Alinha a imagem ao topo do contêiner pai */
+    right: 0; /* Alinha a imagem à direita do contêiner pai */
+    width: 100%; /* Define a largura da imagem */
+}
+
+.inicio-container h2 {
+    font-family: 'Inter Light', sans-serif;
+    margin-top: 20px; /* Adiciona margem acima do título */
+    text-align: center;
 }

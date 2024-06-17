@@ -1,0 +1,6 @@
+.cards-group {
+    display: grid;
+    grid-template-columns: repeat(4, 280px); /* Define 4 colunas responsivas */
+    justify-content:center; /* Centraliza as colunas horizontalmente */
+    margin-top: 16px;
+}

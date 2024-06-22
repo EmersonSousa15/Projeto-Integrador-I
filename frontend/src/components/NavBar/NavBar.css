@@ -11,6 +11,7 @@
 .freteGratis {
     height: 25px;
     background-color: #006B3D;
+    width: 100%;
 }
 
 .freteGratis p {
@@ -25,6 +26,7 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
+    height: 100%;
 }
 
 .cart-icon {
@@ -40,16 +42,19 @@
 }
 
 .welcome {
-    height: 10px;
-    margin-left: 5px;
-    margin-bottom: 7px;
+    margin-top: 1px;
+    font-size: 16px;
     color: #fff;
     cursor: pointer;
-    text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .account-icon {
+    color: #fff;
+    cursor: pointer;
+}
+
+.submenu-container .chevron{
     color: #fff;
     cursor: pointer;
 }
@@ -97,11 +102,12 @@
 }
 
 .submenu-container {
-    position: relative;
+    position: relative; /* relativo somente ao navbar */
     cursor: pointer;
     display: flex;
-    list-style: center;
     align-items: center;
+    gap: 2px 4.5px;
+    justify-content: center;
 }
 
 .submenu {
@@ -113,26 +119,32 @@
     /*tira os pontinhos */
     padding: 0;
     margin: 1rem;
-    width: 100px;
+    width: 128px;
+    height: 108px;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     z-index: 1;
 }
 
-.submenu li span {
-    margin-left: 5px;
-}
-
 .submenu li {
-    align-items: center;
+    text-align: center;
     padding: 10px 20px;
     /* Espaçamento interno dos itens do submenu */
     transition: background-color 0.3s ease;
     /* Efeito de transição suave ao passar o mouse */
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: solid 0.1px 10px;
+    font-size: 14px;
+
 }
 
 .submenu li:hover {
-    background-color: #f0f0f0;
     /* Cor de fundo quando o item do submenu é destacado */
+    background-color: #f0f0f0;
+    color: #069C56;
+}
+
+.submenu li:last-child{
+    border-radius: 4px;
 }

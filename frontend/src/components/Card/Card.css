@@ -7,12 +7,15 @@
 /* Estilo dos cards */
 .book-container {
     width: 220px; /* Reduz a largura do card */
-    height: 411px; /* Reduz a altura do card */
+    height: 400px; /* Reduz a altura do card */
+    padding: 10px 0 0 0;
+    border-radius: 6px;
     background-color: white;
     align-items: center;
     display: flex;
     flex-direction: column;
     transition: box-shadow 0.3s; /* Adiciona transição para suavizar o efeito de sombra */
+
 }
 
 .book-container:hover {
@@ -148,7 +151,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px; /* Aumenta o tamanho do texto */
-    line-height: 18px;
+    line-height: 12px;
     text-align: center;
     color: #676767;
 }

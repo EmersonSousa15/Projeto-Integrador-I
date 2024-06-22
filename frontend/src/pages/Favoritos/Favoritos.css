@@ -1,6 +1,19 @@
-.inicio-container {
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.fav-container {
     display: flex;
     flex-direction: column;
+}
+
+.fav-container h2{
+    margin-top: 5px;
+}
+
+.fav-container .book-container{
+    margin: auto; /* deixa centralizado */
 }
 
 .banner {

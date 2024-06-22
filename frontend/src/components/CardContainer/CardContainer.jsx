@@ -16,7 +16,7 @@ const CardsContainer = ({ cards }) => {
     const cardGroups = splitIntoGroupsOfFour(cards);
 
     return (
-        <div>
+        <div className="book-container-group">
             {cardGroups.map((group, index) => (
                 <div key={index} className="cards-group">
                     {group.map((card, cardIndex) => (

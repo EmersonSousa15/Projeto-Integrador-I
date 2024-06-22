@@ -1,43 +1,41 @@
 *{
     padding: 0;
     margin: 0;
+}
+
+.sigup-container{
+    display: flex;
+    flex-direction: row;
     
 }
 
-.login-container{
-    display: flex;
-    flex-direction: row;
-    overflow-y: hidden;
-}
-
-.login-container .content-side{
+.sigup-container .content-side{
     width: 50%;
     display: flex;
     flex-direction: column;
 }
 
-.login-container .content-side .page-content{
+.sigup-container .content-side .page-content{
     display: flex;
     flex-direction: column;
     margin-left: 120px;
-    margin-right: 90px;
+    margin-right: 60px;
     padding: 30px 0 0 0px;
-    gap: 20px;
 }
 
 
-.login-container .img-side{
+.sigup-container .img-side{
     display: flex;
     justify-content:flex-end;
     width: 50%;
     margin: 0;
 }
 
-.login-container .img-side .books{
+.sigup-container .img-side .books{
     width: 90%;
 }
 
-.login-container .content-side .logo{
+.sigup-container .content-side .logo{
     display: flex;
     flex-direction: rows;
     align-items: center;
@@ -45,7 +43,7 @@
     cursor: pointer;
 }
 
-.login-container .content-side .logo h2{
+.sigup-container .content-side .logo h2{
     font-style: italic;
     font-weight: 700;
     color: #069C56;
@@ -56,7 +54,16 @@
     padding-left: 8px;
 }
 
-.login-container .content-side .page-content h3{
+.sigup-container .content-side .page-content h2{
+    font-weight: 500;
+    color:black;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: left;
+}
+
+.sigup-container .content-side .page-content h3{
     font-weight: 500;
     color:black;
     font-family: 'Inter', sans-serif;
@@ -66,7 +73,7 @@
     align-self: center; /*alinha ele no centro da iv q ele tA*/
 }
 
-.login-container .content-side .page-content h1{
+.sigup-container .content-side .page-content h1{
     font-weight: 500;
     color:black;
     font-family: 'Inter', sans-serif;
@@ -76,28 +83,28 @@
     align-self: center; /*alinha ele no centro da iv q ele tA*/
 }
 
-.login-container .content-side .page-content .inputs{
+.sigup-container .content-side .page-content .inputs{
     display: flex; 
     gap: 32px; /*so funciona com o flex ou grid*/
     flex-direction: column;
     padding: 1px 0 0 0;
 }
 
-.login-container .content-side .page-content .inputs .emailInput{
+.sigup-container .content-side .page-content .inputs .emailInput{
     display: flex;
     flex-direction:column;
     width: 100%;
     gap: 4px;
 }
 
-.login-container .content-side .page-content .inputs .emailInput label{
+.sigup-container .content-side .page-content .inputs .emailInput label{
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 1;
     padding-left: 4px;
 }
 
-.login-container .content-side .page-content .inputs .emailInput input{
+.sigup-container .content-side .page-content .inputs .emailInput input{
     border-radius: 6px;
     border: solid 1px #ACA6A6;
     background-color: #E4E4E4;
@@ -107,21 +114,21 @@
     font-size: 18px;
 }
 
-.login-container .content-side .page-content .inputs .senhaInput{
+.sigup-container .content-side .page-content .inputs .senhaInput{
     display: flex;
     flex-direction:column;
     width: 100%;
     gap: 4px;
 }
 
-.login-container .content-side .page-content .inputs .senhaInput label{
+.sigup-container .content-side .page-content .inputs .senhaInput label{
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 1;
     padding-left: 4px;
 }
 
-.login-container .content-side .page-content .inputs .senhaInput input{
+.sigup-container .content-side .page-content .inputs .senhaInput input{
     border-radius: 6px;
     border: solid 1px #ACA6A6;
     background-color: #E4E4E4;
@@ -131,8 +138,11 @@
     font-size: 18px;
 }
 
-.login-container .content-side .page-content button{
-    margin-top: 20px;
+.sigup-container .content-side .page-content button{
+    display: flex;
+    flex-direction: rows;
+    justify-content: center;
+    align-items: center;
     border-radius: 8px;
     border: 2px solid #069C56; /* sempre fazer botoes assim */
     width: 300px;
@@ -145,8 +155,7 @@
     background-color: white;
 }
 
-.login-container .content-side .page-content button:hover{
-    margin-top: 20px;
+.sigup-container .content-side .page-content button:hover{
     border-radius: 8px;
     border: 2px solid #069C56; /* sempre fazer botoes assim */
     width: 300px;
@@ -159,7 +168,7 @@
     background-color: #069C56;
 }
 
-.login-container .content-side .page-content u{
+.sigup-container .content-side .page-content u{
     align-self: center;
     font-family: 'Inter', sans-serif;
     font-size: 16px;

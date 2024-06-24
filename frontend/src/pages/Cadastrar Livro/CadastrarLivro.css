@@ -1,0 +1,57 @@
+.cadastrarlivro-container .content{
+    width: 800px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    background-color: #D9D9D9;
+    margin-top: 50px;
+}
+
+.cadastrarlivro-container .content .titulo{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastrarlivro-container .content .titulo h2{
+    font-weight: 500;
+    color:black;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    text-align: left;
+    padding-left: 6px;
+}
+
+.cadastrarlivro-container .content .formulario .inputs{
+    display: flex; 
+    gap: 32px; /*so funciona com o flex ou grid*/
+    flex-direction: column;
+    padding: 1px 0 0 0;
+    align-items: center;
+}
+
+.cadastrarlivro-container .content .formulario .inputs .input{
+    display: flex;
+    flex-direction:column;
+    width: 70%;
+    gap: 4px;
+}
+
+.cadastrarlivro-container .content .formulario .inputs .input label{
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 1;
+    padding-left: 4px;
+}
+
+.cadastrarlivro-container .content .formulario .inputs .input input{
+    border-radius: 6px;
+    border: solid 1px #ACA6A6;
+    background-color: #E4E4E4;
+    height: 42px;
+    padding: 10px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+}

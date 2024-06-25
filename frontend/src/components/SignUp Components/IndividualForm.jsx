@@ -5,6 +5,8 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 //Context
 import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
+//Validação de entradas
+import validator from 'validator';
 
 const IndividualForm = () => {
     const {count, setCount} = useContext(PageChange);
@@ -27,6 +29,7 @@ const IndividualForm = () => {
 
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
+        formData.identity = 'fisica';
         console.log(formData);
     };
 

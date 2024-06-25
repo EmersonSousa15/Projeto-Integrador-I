@@ -57,7 +57,7 @@ const Option = () => {
                 
             <h2>Escolha a opção que melhor se encaixa nas suas necessidades e aproveite a nossa plataforma!</h2>
             <button onClick={handleContinueClick} style={{marginTop: '14px'}}>Continuar</button>
-            <h1 style={{marginTop: '8px'}}>Já tem uma conta?  <u onClick={() => navigate('/login')}>Faça login aqui</u></h1>
+            <h1 style={{marginTop: '8px'}}>Já tem uma conta?  <u style ={{fontSize: 15}} onClick={() => navigate('/login')}>Faça login aqui</u></h1>
         </>
   )
 }

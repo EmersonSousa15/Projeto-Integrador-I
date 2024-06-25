@@ -32,6 +32,7 @@ const CorporateForm = () => {
     /* Printa no console os dados enviados */
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
+        formData.identity = 'juridica';
         console.log(formData);
     };
 

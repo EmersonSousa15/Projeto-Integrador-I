@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-//Icons
 import { IoIosArrowRoundForward } from 'react-icons/io';
-//Context
 import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
-//Validação de entradas
 import validator from 'validator';
 
 const IndividualForm = () => {
@@ -21,16 +18,21 @@ const IndividualForm = () => {
     };
 
     const confirmPassword = watch('confirmPassword');
-    const password = watch('password'); 
+    const password = watch('password'); // Define password here
+    const email = watch('email'); // Define email here
 
     const validatePasswordConfirmation = () => {
         return password === confirmPassword || 'As senhas não coincidem.';
     };
 
+    const validateEmail = () => {
+        return validator.isEmail(email) || 'Email inválido.';
+    };
+
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
-        formData.identity = 'fisica';
-        console.log(formData);
+        formData.identity = 'juridica'; // Adiciona o campo identity com o valor 'juridica'
+        console.log(formData); // Aqui você pode enviar os dados para um servidor ou processá-los conforme necessário
     };
 
     return (
@@ -43,29 +45,34 @@ const IndividualForm = () => {
                             <div className="input">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" 
-                                    {...register('email', { required: true })}  
+                                    {...register('email', { 
+                                        required: 'Este campo é obrigatório.',
+                                        validate: validateEmail 
+                                    })}  
                                     className={errors.email ? 'error' : ''}
                                 />
-                                {errors.email?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.email && <p className='error-p'>{errors.email.message}</p>}
                             </div>
                             {/* Senha */}
                             <div className="input">
                                 <label htmlFor="password">Senha</label>
                                 <input type="password" 
-                                    {...register('password', { required: true})} 
+                                    {...register('password', { required: 'Este campo é obrigatório.'})} 
                                     className={errors.password ? 'error' : ''}
                                 />
-                                {errors.password?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.password && <p className='error-p'>{errors.password.message}</p>}
                             </div>
                             {/* Confirmação de Senha */}
                             <div className="input">
                                 <label htmlFor="confirmPassword">Confirmação de Senha</label>
                                 <input type="password" 
-                                    {...register('confirmPassword', { required: true, validate: validatePasswordConfirmation})} 
+                                    {...register('confirmPassword', { 
+                                        required: 'Este campo é obrigatório.', 
+                                        validate: validatePasswordConfirmation 
+                                    })} 
                                     className={errors.confirmPassword ? 'error' : ''}
                                 />
-                                {errors.confirmPassword?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
-                                {errors.confirmPassword?.type === 'validate' && <p className='error-p'>{errors.confirmPassword.message}</p>}
+                                {errors.confirmPassword && <p className='error-p'>{errors.confirmPassword.message}</p>}
                             </div>
                             {/* Botões */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: '24px' }}>
@@ -84,30 +91,30 @@ const IndividualForm = () => {
                             <div className="input">
                                 <label htmlFor="name">Nome e Sobrenome</label>
                                 <input type="text" 
-                                    {...register('name', { required: true })} 
+                                    {...register('name', { required: 'Este campo é obrigatório.' })} 
                                     className={errors.name ? 'error' : ''}
                                 />
-                                {errors.name?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.name && <p className='error-p'>{errors.name.message}</p>}
                             </div>
                             {/* CPF */}
                             <div className="input">
                                 <label htmlFor="cpf">CPF</label>
                                 <input type="text" 
-                                    {...register('cpf', { required: true })} 
+                                    {...register('cpf', { required: 'Este campo é obrigatório.' })} 
                                     placeholder="123.456.789-01" 
                                     className={errors.cpf ? 'error' : ''}
                                 />
-                                {errors.cpf?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.cpf && <p className='error-p'>{errors.cpf.message}</p>}
                             </div>
                             {/* Telefone */}
                             <div className="input">
                                 <label htmlFor="telephone">Telefone</label>
                                 <input type="tel" 
-                                    {...register('telephone', { required: true })} 
+                                    {...register('telephone', { required: 'Este campo é obrigatório.' })} 
                                     placeholder="(XX) XXXXX-XXXX" 
                                     className={errors.telephone ? 'error' : ''}
                                 />
-                                {errors.telephone?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.telephone && <p className='error-p'>{errors.telephone.message}</p>}
                             </div>
                             {/* Botões */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: '24px' }}>

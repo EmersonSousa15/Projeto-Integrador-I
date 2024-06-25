@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
-import validator from 'validator';
+// Validator
+import InputMask from 'react-input-mask';
 
 const IndividualForm = () => {
     const {count, setCount} = useContext(PageChange);
-    const { register, handleSubmit, formState: { errors }, trigger, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, trigger, watch, control } = useForm();
     const [changePage, setChangePage] = useState(true);
 
     const handleNextPage = async () => {
@@ -19,14 +20,9 @@ const IndividualForm = () => {
 
     const confirmPassword = watch('confirmPassword');
     const password = watch('password'); // Define password here
-    const email = watch('email'); // Define email here
 
     const validatePasswordConfirmation = () => {
         return password === confirmPassword || 'As senhas não coincidem.';
-    };
-
-    const validateEmail = () => {
-        return validator.isEmail(email) || 'Email inválido.';
     };
 
     const onSubmit = (data) => {
@@ -47,7 +43,10 @@ const IndividualForm = () => {
                                 <input type="email" 
                                     {...register('email', { 
                                         required: 'Este campo é obrigatório.',
-                                        validate: validateEmail 
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: 'E-mail inválido.',
+                                        },
                                     })}  
                                     className={errors.email ? 'error' : ''}
                                 />
@@ -99,20 +98,43 @@ const IndividualForm = () => {
                             {/* CPF */}
                             <div className="input">
                                 <label htmlFor="cpf">CPF</label>
-                                <input type="text" 
-                                    {...register('cpf', { required: 'Este campo é obrigatório.' })} 
-                                    placeholder="123.456.789-01" 
-                                    className={errors.cpf ? 'error' : ''}
+                                <Controller
+                                    name="cpf"
+                                    control={control}
+                                    rules={{ required: 'Este campo é obrigatório.',
+                                            minLength: {value: 14, message: 'Informação incompleta.'}}}
+                                    render={({ field }) => (
+                                        <InputMask
+                                            {...field}
+                                            mask="999.999.999-99"
+                                            maskChar={null}
+                                            alwaysShowMask={false}
+                                        >
+                                            {(inputProps) => <input {...inputProps} type="text" className={errors.cpf ? 'error' : ''} />}
+                                        </InputMask>
+                                    )}
                                 />
                                 {errors.cpf && <p className='error-p'>{errors.cpf.message}</p>}
                             </div>
                             {/* Telefone */}
                             <div className="input">
                                 <label htmlFor="telephone">Telefone</label>
-                                <input type="tel" 
-                                    {...register('telephone', { required: 'Este campo é obrigatório.' })} 
-                                    placeholder="(XX) XXXXX-XXXX" 
-                                    className={errors.telephone ? 'error' : ''}
+                                <Controller
+                                    name="telephone"
+                                    control={control}
+                                    rules={{ 
+                                        required: 'Este campo é obrigatório.', 
+                                        minLength: {value: 19, message: 'Número de celular incompleto.'}}}
+                                    render={({ field }) => (
+                                        <InputMask
+                                            {...field}
+                                            mask="+55 (99) \99999-9999"
+                                            maskChar={null}
+                                            alwaysShowMask={false}
+                                        >
+                                            {(inputProps) => <input {...inputProps} type="tel" className={errors.telephone ? 'error' : ''} />}
+                                        </InputMask>
+                                    )}
                                 />
                                 {errors.telephone && <p className='error-p'>{errors.telephone.message}</p>}
                             </div>

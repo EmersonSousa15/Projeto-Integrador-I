@@ -1,17 +1,19 @@
 import React, { useState, useContext } from 'react';
 // React Form
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 // Icons
 import { IoIosArrowRoundForward } from 'react-icons/io';
 // Context
 import { PageChange } from '../../contexts/pageChange';
+// Validator
+import InputMask from 'react-input-mask';
 
 const CorporateForm = () => {
     const { count, setCount } = useContext(PageChange);
-    const { register, handleSubmit, formState: { errors }, trigger, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, trigger, watch, control } = useForm();
     const [changePage, setChangePage] = useState(true);
 
-    /* Funçao para deixar ir pra próxima página se não houver erro nos inputs */
+    /* Função para deixar ir para a próxima página se não houver erro nos inputs */
     const handleNextPage = async () => {
         const result = await trigger(["confirmPassword", "email", "password"]);
         console.log(result);
@@ -42,14 +44,19 @@ const CorporateForm = () => {
                 <div className="inputs">
                     {changePage &&
                         <>
-                            {/* Email */}
-                            <div className="input"> 
+                            <div className="input">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" 
-                                    {...register('email', { required: true })} 
+                                    {...register('email', { 
+                                        required: 'Este campo é obrigatório.',
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: 'E-mail inválido.',
+                                        },
+                                    })}  
                                     className={errors.email ? 'error' : ''}
                                 />
-                                {errors.email?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.email && <p className='error-p'>{errors.email.message}</p>}
                             </div>
                             {/* Senha */}
                             <div className="input">
@@ -64,18 +71,20 @@ const CorporateForm = () => {
                             <div className="input">
                                 <label htmlFor="confirmPassword">Confirmação de Senha</label>
                                 <input type="password" 
-                                    {...register('confirmPassword', { required: true, validate: validatePasswordConfirmation})} 
+                                    {...register('confirmPassword', { 
+                                        required: true, 
+                                        validate: validatePasswordConfirmation
+                                    })} 
                                     className={errors.confirmPassword ? 'error' : ''}
                                 />
-                                {errors.confirmPassword?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
-                                {errors.confirmPassword?.type === 'validate' && <p className='error-p'>{errors.confirmPassword.message}</p>}
+                                {errors.confirmPassword &&<p className='error-p'>{errors.confirmPassword.message}</p>}
                             </div>
                             {/* Botões */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: '24px' }}>
                                 <button type="button" onClick={() => setCount(0)} style={{ width: '140px', gap: '4px' }}>
                                     <IoIosArrowRoundForward size={30} style={{ transform: 'rotate(180deg)' }} /> Anterior
                                 </button>
-                                <button onClick={handleNextPage} style={{ width: '140px', gap: '4px' }}>
+                                <button type="button" onClick={handleNextPage} style={{ width: '140px', gap: '4px' }}>
                                     Próximo <IoIosArrowRoundForward size={30} />
                                 </button>
                             </div>
@@ -95,22 +104,45 @@ const CorporateForm = () => {
                             {/* CNPJ */}
                             <div className="input">
                                 <label htmlFor="cnpj">CNPJ</label>
-                                <input type="text"
-                                    {...register('cnpj', { required: true })} 
-                                    placeholder="00.000.000/0000-00" 
-                                    className={errors.cnpj ? 'error' : ''}
+                                <Controller
+                                    name="cnpj"
+                                    control={control}
+                                    rules={{ required: 'Este campo é obrigatório.',
+                                            minLength: {value: 19, message: 'Informação incompleta.'}}}
+                                    render={({ field }) => (
+                                        <InputMask
+                                            {...field}
+                                            mask="99.999.9999/9999-99"
+                                            maskChar={null}
+                                            alwaysShowMask={false}
+                                        >
+                                            {(inputProps) => <input {...inputProps} type="text" className={errors.cnpj ? 'error' : ''} />}
+                                        </InputMask>
+                                    )}
                                 />
-                                {errors.cnpj?.type === 'required' && <p className='error-p'> Este campo é obrigatório.</p>}
+                                {errors.cnpj && <p className='error-p'>{errors.cnpj.message}</p>}
                             </div>
                             {/* Telefone */}
                             <div className="input">
                                 <label htmlFor="telephone">Telefone</label>
-                                <input type="tel" 
-                                    {...register('telephone', { required: true })} 
-                                    placeholder="(XX) XXXXX-XXXX" 
-                                    className={errors.telephone ? 'error' : ''}
+                                <Controller
+                                    name="telephone"
+                                    control={control}
+                                    rules={{ 
+                                        required: 'Este campo é obrigatório.', 
+                                        minLength: {value: 19, message: 'Número de celular incompleto.'}}}
+                                    render={({ field }) => (
+                                        <InputMask
+                                            {...field}
+                                            mask="+55 (99) \99999-9999"
+                                            maskChar={null}
+                                            alwaysShowMask={false}
+                                        >
+                                            {(inputProps) => <input {...inputProps} type="tel" className={errors.telephone ? 'error' : ''} />}
+                                        </InputMask>
+                                    )}
                                 />
-                                {errors.telephone?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.telephone && <p className='error-p'>{errors.telephone.message}</p>}
                             </div>
                             {/* Botões */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingTop: '24px' }}>

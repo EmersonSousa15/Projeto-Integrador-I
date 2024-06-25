@@ -6,6 +6,9 @@ import Opcoes from '../pages/Opcoes/Opcoes'
 import CadastrarLivro from '../pages/Cadastrar Livro/CadastrarLivro'
 import SignUp from '../pages/SignUp/SignUp'
 import Home from '../pages/Home/Home'
+import Teste from '../pages/Teste/Teste'
+import IndividualForm from '../components/SignUp Components/IndividualForm'
+import { PageChangeProvider } from '../contexts/pageChange'
 
 const router = createBrowserRouter([
     {
@@ -33,7 +36,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/signup',
-                element: <SignUp />
+                element: <PageChangeProvider><SignUp /></PageChangeProvider>
+            },
+            {
+                path: '/teste',
+                element: <IndividualForm />
             }
         ] 
     }

@@ -1,12 +1,6 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-
 .signup-container{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;  
 }
 
 .signup-container .content-side{
@@ -85,33 +79,62 @@
 
 .signup-container .content-side .page-content .inputs{
     display: flex; 
-    gap: 32px; /*so funciona com o flex ou grid*/
+    gap: 10px; /*so funciona com o flex ou grid*/
     flex-direction: column;
     padding: 1px 0 0 0;
 }
 
 .signup-container .content-side .page-content .inputs .input{
-    display: flex;
-    flex-direction:column;
     width: 100%;
-    gap: 4px;
+    height: 80px; /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Inclui padding e border na largura e altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
 }
 
 .signup-container .content-side .page-content .inputs .input label{
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evita que o label seja clicável */
+    transition: all 0.3s ease;
+    color: #504f4f;
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    font-weight: 1;
-    padding-left: 4px;
+    font-size: 13px;
+    font-weight: 400; /* Ajuste conforme necessário */
 }
 
 .signup-container .content-side .page-content .inputs .input input{
-    border-radius: 6px;
-    border: solid 1px #ACA6A6;
-    background-color: #E4E4E4;
-    height: 42px;
-    padding: 10px 14px;
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ACA6A6;
+    height: 60px;
+    padding: 28px 10px 10px 10px;
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+.signup-container .content-side .page-content .inputs .input input:focus{
+    border-color: #069C56;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+
+.signup-container .content-side .page-content .inputs .input input.error{
+    border-color: red;
+}
+
+.signup-container .content-side .page-content .error-p {
+    margin-top: 4px;
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0px 0 0 4px;
 }
 
 .signup-container .content-side .page-content button{

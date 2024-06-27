@@ -3,11 +3,9 @@ import App from '../App'
 import Login from '../pages/Login/Login'
 import Favoritos from '../pages/Favoritos/Favoritos'
 import Opcoes from '../pages/Opcoes/Opcoes'
-import CadastrarLivro from '../pages/Cadastrar Livro/CadastrarLivro'
 import SignUp from '../pages/SignUp/SignUp'
 import Home from '../pages/Home/Home'
-import Teste from '../pages/Teste/Teste'
-import IndividualForm from '../components/SignUp Components/IndividualForm'
+import AddBook from '../../src/pages/AddBook/AddBook'
 import { PageChangeProvider } from '../contexts/pageChange'
 
 const router = createBrowserRouter([
@@ -32,16 +30,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/cadastrarlivro',
-                element: <CadastrarLivro />
+                element: <AddBook />
             },
             {
                 path: '/signup',
                 element: <PageChangeProvider><SignUp /></PageChangeProvider>
             },
-            {
-                path: '/teste',
-                element: <IndividualForm />
-            }
         ] 
     }
 ])

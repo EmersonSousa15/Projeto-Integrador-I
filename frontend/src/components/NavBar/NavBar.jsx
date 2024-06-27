@@ -51,13 +51,7 @@ const NavBar = () => {
     
     return (
         <>
-            <div className="freteGratis">
-                <p>* Frete grátis para todo Brasil * Frete grátis para todo Brasil  * Frete grátis para todo Brasil
-                    * Frete grátis para todo Brasil * Frete grátis para todo Brasil * Frete grátis para todo Brasil
-                    * Frete grátis para todo Brasil * Frete grátis para todo Brasil
-                </p>
-            </div>
-
+           
             <header className="navbar">
                 <div className="container-logo">
                     <p className="nav-logo" onClick={logoClick} >Estante<br/>Virtual</p>

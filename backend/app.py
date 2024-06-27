@@ -49,7 +49,7 @@ def cadastro():
         cursor.execute("SELECT idUsuario FROM usuario WHERE emailUsuario = %s", (emailUsuario,))
         id_usuario = cursor.fetchone()
 
-        tipo_pessoa = data['type_person']
+        tipo_pessoa = data['identity']
 
         if tipo_pessoa == "fisica":
             cpfPessoa = data['cpf']

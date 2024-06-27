@@ -18,7 +18,7 @@ const IndividualForm = () => {
 
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data;
-        formData.identity = 'juridica';
+        formData.identity = 'fisica';
         userRegister(formData)
     };
 

@@ -1,0 +1,223 @@
+.addBook-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background: linear-gradient(255.96deg, rgba(0, 107, 61, 0.9) 0%, rgba(6, 156, 86, 0.9) 38%, rgba(255, 152, 14, 0.9) 100%);
+}
+
+.addBook-container .addBook-content{
+    width: 1000px;
+    margin: 40px auto;
+    height: 780px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+}
+
+.addBook-container .addBook-content .img-preview{
+    width:40%;
+    padding: 40px;
+}
+
+.addBook-container .addBook-content .img-preview .img-upload{
+    border: 1px solid #aeaeae; /* sempre fazer botoes assim */
+    width: 280px;
+    height: 380px;
+    background-color: #e1e0e0;
+}
+
+
+
+.addBook-container .addBook-content form .input{
+    height: 20px; /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Inclui padding e border na largura e altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.addBook-container .addBook-content form .input label{
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evita que o label seja clicável */
+    transition: all 0.3s ease;
+    color: #504f4f;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Ajuste conforme necessário */
+}
+
+.addBook-container .addBook-content form .input input{
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ACA6A6;
+    height: 60px;
+    padding: 28px 10px 10px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+
+.addBook-container .addBook-content form input:focus{
+    border-color: #069C56;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+
+.addBook-container .addBook-content form .input input.error{
+    border-color: red;
+}
+
+.addBook-container .addBook-content form .error-p {
+    margin-top: 4px;
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0px 0 0 4px;
+}
+
+.addBook-container .addBook-content form .inputs-category{
+    margin-top: 25px;
+}
+
+.addBook-container .addBook-content form .inputs-category h3{
+    color: #069C56;
+    font-family: 'Inter', sans-serif;
+}
+
+.addBook-container .addBook-content form .inputs-category p{
+    color: #504f4f;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+
+/* Customização dos inputs*/
+.addBook-container .addBook-content .form-inputs{
+    display: flex; 
+    gap: 10px; /*so funciona com o flex ou grid*/
+    flex-direction: column;
+    padding: 1px 20px 0 0;
+    width: 100%;
+}
+
+.addBook-container .addBook-content .form-inputs .input{
+    height: 20px; /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Inclui padding e border na largura e altura */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.addBook-container .addBook-content .form-inputs .input label{
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evita que o label seja clicável */
+    transition: all 0.3s ease;
+    color: #504f4f;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Ajuste conforme necessário */
+}
+
+.addBook-container .addBook-content .form-inputs .input input{
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ACA6A6;
+    height: 60px;
+    padding: 28px 10px 10px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+
+.addBook-container .addBook-content .form-inputs input:focus{
+    border-color: #069C56;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+
+.addBook-container .addBook-content .form-inputs .input input.error{
+    border-color: red;
+}
+
+.addBook-container .addBook-content .form-inputs .error-p {
+    margin-top: 4px;
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0px 0 0 4px;
+}
+
+/* Customização Select */
+.addBook-container .addBook-content .form-inputs select{
+    width: 280px;
+    height: 40px;
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ACA6A6;
+    color: #333;
+    outline: none;
+}
+
+.addBook-container .addBook-content .form-inputs select:focus{
+    border-color: #069C56;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+.addBook-container .addBook-content .form-inputs select option{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.addBook-container .addBook-content .form-inputs button{
+    display: flex;
+    flex-direction: rows;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #069C56; /* sempre fazer botoes assim */
+    width: 300px;
+    height: 30px;
+    align-self: center;
+    font-weight: 100;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #069C56;
+    cursor: pointer;
+    background-color: white;
+}
+
+.addBook-container .addBook-content .submit-button{
+    display: flex;
+    flex-direction: rows;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #069C56; /* sempre fazer botoes assim */
+    width: 300px;
+    height: 40px;
+    align-self: center;
+    font-weight: 100;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #069C56;
+    cursor: pointer;
+    background-color: white;
+}
+
+.addBook-container .addBook-content .submit-button:hover{
+    color: white;
+    background-color: #069C56;
+}
+
+

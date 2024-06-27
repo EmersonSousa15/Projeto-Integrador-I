@@ -1,6 +1,7 @@
 .signup-container{
     display: flex;
     flex-direction: row;  
+    overflow-y: hidden;
 }
 
 .signup-container .content-side{
@@ -71,7 +72,7 @@
     font-weight: 500;
     color:black;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 20px;
     text-align: left;
     align-self: center; /*alinha ele no centro da iv q ele tA*/

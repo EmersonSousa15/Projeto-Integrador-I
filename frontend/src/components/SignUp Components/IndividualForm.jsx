@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { PageChange } from '../../contexts/pageChange';
+import { userRegister } from '../../services/users/userRegister';
 
 const IndividualForm = () => {
     const {count, setCount} = useContext(PageChange);
@@ -18,7 +19,7 @@ const IndividualForm = () => {
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data;
         formData.identity = 'juridica';
-        console.log(formData);
+        userRegister(formData)
     };
 
     //Formatação CPF

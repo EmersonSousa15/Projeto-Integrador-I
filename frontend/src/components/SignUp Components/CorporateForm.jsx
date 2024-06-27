@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { PageChange } from '../../contexts/pageChange';
+import { useContext } from 'react';
+import { userRegister } from '../../services/users/userRegister';
 
 const IndividualForm = () => {
     const { count, setCount } = useContext(PageChange);
@@ -18,7 +20,7 @@ const IndividualForm = () => {
     const handleFinalSubmit = (data) => {
             const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
             formData.identity = 'juridica'; // Adiciona o campo identity com o valor 'juridica'
-            console.log(formData); // Aqui você pode enviar os dados para um servidor ou processá-los conforme necessário
+            userRegister(formData)
     };
 
     //Formatação CNPJ

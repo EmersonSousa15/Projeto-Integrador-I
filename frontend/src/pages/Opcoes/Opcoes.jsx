@@ -13,10 +13,10 @@ export const Opcoes = () => {
     <div className="opcoes-container">
       <NavBar/>
       <div className="buttons">
-        <button><CiBookmark size={50} />Meus Livros</button>
+        <button><CiBookmark size={50} /> Meus Livros </button>
         <button><GiReceiveMoney size={50}/> Minhas Vendas </button>
-        <button onClick={() => navigate('/cadastrarlivro')}> <BsBookmarkPlus size={42}/>Cadastrar Livros</button>
-        <button><PiShoppingBagLight size={50}/> Meus Pedidos</button>
+        <button onClick={() => navigate('/cadastrarlivro')}> <BsBookmarkPlus size={42}/> Cadastrar Livros </button>
+        <button><PiShoppingBagLight size={50}/> Meus Pedidos </button>
       </div>
       
     </div>

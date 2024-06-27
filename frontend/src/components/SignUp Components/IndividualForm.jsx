@@ -5,6 +5,7 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 //Context
 import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
+import { userRegister } from '../../services/users/userRegister';
 
 const IndividualForm = () => {
     const {count, setCount} = useContext(PageChange);
@@ -26,8 +27,9 @@ const IndividualForm = () => {
     };
 
     const onSubmit = (data) => {
+        data.type_person = 'fisica';
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
-        console.log(formData);
+        userRegister(formData)
     };
 
     return (

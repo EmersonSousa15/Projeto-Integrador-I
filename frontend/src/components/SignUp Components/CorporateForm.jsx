@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 // Context
 import { PageChange } from '../../contexts/pageChange';
+import { userRegister } from '../../services/users/userRegister';
 
 const CorporateForm = () => {
     const { count, setCount } = useContext(PageChange);
@@ -14,7 +15,6 @@ const CorporateForm = () => {
     /* Funçao para deixar ir pra próxima página se não houver erro nos inputs */
     const handleNextPage = async () => {
         const result = await trigger(["confirmPassword", "email", "password"]);
-        console.log(result);
         if (result) {
             setChangePage(false);
         }
@@ -31,8 +31,9 @@ const CorporateForm = () => {
 
     /* Printa no console os dados enviados */
     const onSubmit = (data) => {
+        data.type_person = 'juridica';
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
-        console.log(formData);
+        userRegister(formData)
     };
 
     return (
@@ -84,12 +85,12 @@ const CorporateForm = () => {
                         <>
                             {/* Nome Fantasia */}
                             <div className="input">
-                                <label htmlFor="businessName">Nome Fantasia</label>
+                                <label htmlFor="name">Nome Fantasia</label>
                                 <input type="text" 
-                                    {...register('businessName', { required: true })} 
-                                    className={errors.businessName ? 'error' : ''}
+                                    {...register('name', { required: true })} 
+                                    className={errors.name ? 'error' : ''}
                                 />
-                                {errors.businessName?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
+                                {errors.name?.type === 'required' && <p className='error-p'>Este campo é obrigatório.</p>}
                             </div>
                             {/* CNPJ */}
                             <div className="input">

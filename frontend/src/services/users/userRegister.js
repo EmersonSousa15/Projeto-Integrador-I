@@ -1,17 +1,31 @@
 import httpCliente from "../httpCliente";
 
-export const userRegister = async (userData) => {
+
+export const userRegister = async (userData, setChangePage) => {
     // Implementar a chamada para o backend para registrar o usuário
-    console.log(userData);
+
     try {
-        const response = httpCliente.post('http://127.0.0.1:5000/register', {
+        const response = await httpCliente.post('http://127.0.0.1:5000/register', {
             ...userData,
         });
+        console.log(response);
 
-        const data = (await response).data;
-
-        
+        if(response.status === 200){
+            return response.status
+        }
+ 
     } catch (error) {
-        console.error('Error:', error.response?.data?.message || error.message);
+        if (error.response?.status === 409) {
+            if(error.response?.data?.code === "EMAIL_ALREADY_EXISTS") {
+                setChangePage(true)
+                return([error.response?.data?.message, error.response?.data?.code, "email"])
+
+            }else if(error.response?.data?.code === "CPF_ALREADY_EXISTS") {
+                return([error.response?.data?.message, error.response?.data?.code, "cpf"])
+
+            }else if(error.response?.data?.code === "CNPJ_ALREADY_EXISTS") {
+                return([error.response?.data?.message,error.response?.data?.code, "cnpj"])
+            }
+        }
     }
 };

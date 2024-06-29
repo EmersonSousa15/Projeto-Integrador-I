@@ -5,6 +5,7 @@ import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
 import { userRegister } from '../../services/users/userRegister';
 import { useNavigate } from 'react-router-dom';
+import { RegisterUserInfoLogin, UIUserName, UIUserTelephone} from './UserForm';
 
 const IndividualForm = () => {
     const { count, setCount } = useContext(PageChange);

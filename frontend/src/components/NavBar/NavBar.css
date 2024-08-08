@@ -1,15 +1,12 @@
 .navbar {
-    width: 90%;
-    height: 76px;
+    width: 98%;
+    height: 62px;
     padding: 0 1rem;
     display: flex;
     align-items: center;
     margin:auto;
-    margin-top: 18px;
-    background: rgba( 255, 255, 255, 0.06 );
-    backdrop-filter: blur( 1.5px );
-    -webkit-backdrop-filter: blur( 1.5px );
-    border-radius: 16px; 
+    background: #006B3D;
+    border-radius: 15px;
 }
 
 .right-side {
@@ -57,11 +54,11 @@
 .nav-logo {
     text-align: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
     height: 60px;
-    font-family: 'Inter';
     font-style: italic;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 25px;
     color: #FFFFFF;
     cursor: pointer;
@@ -139,3 +136,43 @@
 .submenu li:last-child{
     border-radius: 4px;
 }
+
+.book-submenu {
+    position: absolute;
+    /* Altere para absolute */
+    top: 100%;
+    /* Posicione abaixo do ícone */
+    list-style: none;
+    /*tira os pontinhos */
+    padding: 0;
+    margin: 1rem;
+    width: 146px;
+    height: 144px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.book-submenu li {
+    text-align: center;
+    padding: 10px 20px;
+    /* Espaçamento interno dos itens do submenu */
+    transition: background-color 0.3s ease;
+    /* Efeito de transição suave ao passar o mouse */
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: solid 0.1px 10px;
+    font-size: 14px;
+
+}
+
+.book-submenu li:hover {
+    /* Cor de fundo quando o item do submenu é destacado */
+    background-color: #f0f0f0;
+    color: #069C56;
+}
+
+.book-submenu li:last-child{
+    border-radius: 4px;
+}
+

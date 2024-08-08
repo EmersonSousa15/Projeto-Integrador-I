@@ -68,7 +68,7 @@ export const RegisterUserInfoLogin = ({register, trigger, errors, watch, setCoun
 }
 
 
-export const UIUsername = ({register, errors}) => {
+export const UIUserName = ({register, errors}) => {
 
     return (
         <div className="input">

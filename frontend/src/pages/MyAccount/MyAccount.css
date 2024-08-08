@@ -1,0 +1,136 @@
+.account-container {
+    background-color: #E5ECE9;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.account-container .account-content {
+    width: 1100px;
+    margin: 40px auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.account-container .minha-conta {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    font-weight: bold;
+    gap: 2%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.account-container .account-form h3 {
+    color: #006B3D;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.account-container .divider {
+    width: 100%; /* Faz a linha ocupar toda a largura do contêiner pai */
+    border: 0;
+    height: 1px; /* Altura da linha */
+    background-color: #ccc; /* Cor da linha */
+    margin: 10px 0; /* Espaçamento ao redor da linha */
+}
+
+.account-container .account-form {
+    margin: 50px;
+}
+
+.account-container .account-form .client-info {
+    display: flex;
+    gap: 4%;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px; /* Espaçamento abaixo do formulário */
+}
+
+.account-container .account-form .input {
+    width: 100%;
+    position: relative;
+    margin-bottom: 10px; /* Espaçamento abaixo de cada input */
+}
+
+.account-container .account-form .input label {
+    position: absolute;
+    top:  14px; /* Ajusta a posição do label */
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evita que o label seja clicável */
+    transition: all 0.3s ease;
+    color: #504f4f;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400; /* Ajuste conforme necessário */
+}
+
+.account-container .account-form .input input {
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ACA6A6;
+    height: 60px; /* Altura do input */
+    padding: 28px 10px 10px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    width: 100%; /* Garante que o input ocupe toda a largura disponível */
+}
+
+.account-container .account-form .input input:focus {
+    border-color: #069C56;
+    color: #000000;
+    background-color: #f1f1f1;
+}
+
+.account-container .account-form .input input.error {
+    border-color: red;
+}
+
+.account-container .account-form .input .error-p {
+    margin-top: 4px;
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 0px 0 0 4px;
+}
+
+.account-container .account-form button{
+    display: flex;
+    flex-direction: rows;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #069C56; /* sempre fazer botoes assim */
+    width: 300px;
+    height: 30px;
+    align-self: center;
+    font-weight: 100;
+    font-size: 18px;
+    color: #069C56;
+    cursor: pointer;
+    background-color: white;
+}
+
+.account-container .account-form button:hover{
+    color: white;
+    background-color: #069C56;
+}
+
+.account-container .account-form .submit-button2{
+    color: #D3212C;
+    border: 1px solid #D3212C;
+}
+
+.account-container .account-form .submit-button2:hover{
+    color: white;
+    background-color: #D3212C;
+}

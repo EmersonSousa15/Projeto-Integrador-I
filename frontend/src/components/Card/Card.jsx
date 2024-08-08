@@ -1,41 +1,32 @@
-import React, { useState } from "react";
-import './Card.css'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'; 
-import { IoIosHeartEmpty } from "react-icons/io";
-import { IoMdHeart } from "react-icons/io";
+import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
+import './Card.css'
 
-const Card = ({ title, author, image, color }) => {
+const Card = ({id, title, author, image}) => {
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
-
-    const bookClick = () => {
-        navigate('/livro');
-    };
 
     const toggleFavorite = () => {
         setIsFavorite(!isFavorite);
     };
 
-    const buyBookClass = `buy-book ${color}`;
-    const heartBookClass = `heart-book ${color}`;
-
-    return(
-        <div className="book-container">
-            <img className="book-img" src={image} alt={title}/>
+    return (
+        <div className="card-container">
+            <img className="book-image" src={image} alt={title} onClick={() => navigate(`/${id}`)} />
             <div className="book-info">
-                <h1>{title}</h1>
-                <h2>{author}</h2>
-            </div>
-            <div className="options">
-                <button className={buyBookClass} onClick={bookClick}>Comprar</button>
+                <div className="book-data">
+                    <h1>{title}</h1>
+                    <h2>{author}</h2>
+                </div>
                 {isFavorite ? (
-                    <IoMdHeart className={heartBookClass} size={33} onClick={toggleFavorite} />
-                ) : (
-                    <IoIosHeartEmpty className={heartBookClass} size={33} onClick={toggleFavorite} />
+                        <IoMdHeart className="filled-heart" size={33} onClick={toggleFavorite} />
+                    ) : (
+                        <IoIosHeartEmpty className="unfilled-heart" size={33} onClick={toggleFavorite} />
                 )}
             </div>
         </div>
-    );
+    )
 }
 
-export default Card;
+export default Card

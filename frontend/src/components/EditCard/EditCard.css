@@ -1,4 +1,4 @@
-.card-container{
+.edit-card-container{
     width: 190px; /* Reduz a largura do card */
     height: 280px; /* Reduz a altura do card */
     border-radius: 4px 20px 20px 4px;
@@ -13,7 +13,7 @@
     overflow: hidden;
 }
 
-.card-container .book-image{
+.edit-card-container .book-image{
     overflow: hidden;
     object-fit: cover;
     border-radius: 4px 20px 20px 4px;
@@ -22,17 +22,17 @@
     overflow: hidden;
 }
 
-.card-container:hover{
+.edit-card-container:hover{
     box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
     
 }
 
-.card-container .book-image:hover{
+.edit-card-container .book-image:hover{
     transform: scale(1.16);
 }
 
 
-.card-container .book-info{
+.edit-card-container .book-info{
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -49,7 +49,7 @@
     padding: 0px 14px 20px 4px ;
 }
 
-.card-container .book-info .book-data{
+.edit-card-container .book-info .book-data{
     display: flex;
     flex-direction: column;
     padding: 0 0 0 10px;
@@ -57,24 +57,16 @@
     width: 80%;
 }
 
-.card-container .book-info .book-data h1{
+.edit-card-container .book-info .book-data h1{
     font-size: 14px;
     font-weight: 100;
     text-align: left;
 }
 
-.card-container .book-info .book-data h2{
+.edit-card-container .book-info .book-data h2{
     font-size: 12px;
     text-align: left;
     font-weight: 200;
     margin: 0;
-    color: #FF980E;
-}
-
-.card-container .book-info .unfilled-heart{
-    color: #FF980E;
-}
-
-.card-container .book-info .filled-heart{
     color: #FF980E;
 }

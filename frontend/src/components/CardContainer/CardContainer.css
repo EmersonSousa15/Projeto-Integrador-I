@@ -1,10 +1,11 @@
 .book-container-group{
     margin-top: 30px;
+    justify-content: center;
+    margin: auto;
 }
 
 .cards-group {
-    display: grid;
-    grid-template-columns: repeat(4, 280px); /* Define 4 colunas responsivas */
-    justify-content:center; /* Centraliza as colunas horizontalmente */
-    margin-top: 20px;
+    display: flex;
+    gap: 40px;
+    margin: 20px;
 }

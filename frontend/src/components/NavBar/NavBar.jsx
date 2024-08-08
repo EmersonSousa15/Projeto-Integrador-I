@@ -7,30 +7,27 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import { CiHeart } from "react-icons/ci";
 import { TfiBook } from "react-icons/tfi";
+import Logo from '../../assets/LogoBook.png'
 
 
 const NavBar = () => {
-    const [showSubMenu, setShowSubMenu] = useState(false);
+    const [activeSubMenu, setActiveSubMenu] = useState(null); // null, 'account', 'book'
     const timeoutRef = useRef(null);
     const navigate = useNavigate();
 
-    const handleAccountMouseEnter = () => {
+    const handleMouseEnter = (submenu) => {
         clearTimeout(timeoutRef.current);
-        setShowSubMenu(true);
+        setActiveSubMenu(submenu);
     };
 
-    const handleAccountMouseLeave = () => {
+    const handleMouseLeave = () => {
         timeoutRef.current = setTimeout(() => {
-            setShowSubMenu(false);
+            setActiveSubMenu(null);
         }, 100);
     };
 
     const handleCartClick = () => {
-        navigate('/carrinho');
-    };
-
-    const bookClick = () => {
-        navigate('/opcoes');
+        // Lógica para o carrinho
     };
 
     const heartClick = () => {
@@ -50,40 +47,61 @@ const NavBar = () => {
     };
     
     return (
-        <>
-           
+        <div style={{marginTop:'1.5%'}}>  
             <header className="navbar">
-                <div className="container-logo">
-                    <p className="nav-logo" onClick={logoClick} >Estante<br/>Virtual</p>
+                <div className="container-logo" style={{ display: 'flex', gap: '8px', alignItems:'center', justifyContent:'center' }}>
+                    <img src={Logo} alt="Logo" className="logoBook" style={{ width: '40px', height: '40px' }} />
+                    <p className="nav-logo" style={{ alignContent:'center'}} onClick={logoClick}>Estante Virtual</p>
                 </div>
 
                 <div className="search-box">
                     <input type="text" placeholder="" />
                     <IoSearchOutline style={{ color: "#fff" }} />
                 </div>
+                
 
                 <div className="right-side">
-                    <TfiBook className="book" size={25} onClick={bookClick}/>
+                    <div 
+                        className="submenu-container" 
+                        onMouseEnter={() => handleMouseEnter('book')} 
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <TfiBook className="book" size={25} />
+                        {activeSubMenu === 'book' &&
+                            <ul className="book-submenu">
+                                <li onClick={() => navigate('/cadastrarlivro')}>Cadastrar Livro</li>
+                                <li onClick={() => navigate('/meuslivros')}>Meus Livros</li>
+                                <li>Minhas Compras</li>
+                                <li>Minhas Vendas</li>  
+                            </ul>
+                        }
+                    </div>
+
                     <CiHeart className="heart" size={33} onClick={heartClick} />
-                    <div className="submenu-container" onMouseEnter={handleAccountMouseEnter} onMouseLeave={handleAccountMouseLeave}>
+                    
+                    <div 
+                        className="submenu-container" 
+                        onMouseEnter={() => handleMouseEnter('account')} 
+                        onMouseLeave={handleMouseLeave}
+                    >
                         <VscAccount size={25} className="account-icon" style={{ color: "#fff" }} />
                         <p className="welcome">Olá, usuário</p>
-                        {showSubMenu &&
+                        {activeSubMenu === 'account' &&
                             <ul className="submenu">
                                 <li onClick={logInClick}><span>Log in</span></li>
                                 <li onClick={signUpClick}>Sign up</li>
-                                <li>Minha conta</li>
+                                <li onClick={() => navigate('/minhaconta')}>Minha conta</li>
                             </ul>
                         }
                         <FaChevronDown className="chevron"/>
-
                     </div>
 
+                    
                     <BsCart3 className="cart-icon" size={25} onClick={handleCartClick} />
                 </div>
             </header>
-        </>
+        </div>
     );
 }
 
-export default NavBar
+export default NavBar;

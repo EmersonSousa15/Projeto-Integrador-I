@@ -1,13 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
-import './AddBook.css'
 import { useForm } from 'react-hook-form';
 import  SemCapa  from '../../assets/SemCapa.jpg'
+import "./EditBook.css";
 
-const AddBook = () => {
+export const EditBook = () => {
     const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({mode: 'onChange'});
     const [ stateButton, setStateButton ] = useState('Novo');
     const [imgLink, setImgLink] = useState(''); // Estado para armazenar o link da imagem
+
+    const teste = {
+        authorName : "JOSUÉ LEMOS MESQUITA",
+        bookName : "JOSUÉ LEMOS MESQUITA",
+        description : "dd",
+        genre : "terror",
+        inventory : 4,
+        isbn : "323-23-23232-32-3",
+        linkImg : "https://th.bing.com/th/id/OIP.nQlzmrFpKiFiEG93V2qACQHaLH?rs=1&pid=ImgDetMain",
+        price : 4,
+        publisher : "A",
+        state : "Usado"
+    }
+
+    useEffect(() => {
+        // Inicializa os campos do formulário com os valores do objeto `teste`
+        setValue('authorName', teste.authorName);
+        setValue('bookName', teste.bookName);
+        setValue('description', teste.description);
+        setValue('genre', teste.genre);
+        setValue('inventory', teste.inventory);
+        setValue('isbn', teste.isbn);
+        setValue('linkImg', teste.linkImg);
+        setValue('price', teste.price);
+        setValue('publisher', teste.publisher);
+        setStateButton(teste.state);
+        setImgLink(teste.linkImg);
+    }, [setValue]);
 
     /* Envia os dados do formulário */
     const onSubmit = (data) => {
@@ -52,9 +80,9 @@ const AddBook = () => {
     };
 
     return (
-        <div className="addBook-container">
+        <div className="editBook-container">
             <NavBar/>
-            <div className="addBook-content">
+            <div className="editBook-content">
                 {/* Textinho */}
                 <div className="img-preview">
                     {!imgLink && <img src={ SemCapa } alt="Book Preview" style={{ width:'100%', height: '100%', borderTopLeftRadius:'20px', borderBottomLeftRadius:'20px', maxWidth: '333.4px'}} />}
@@ -220,13 +248,17 @@ const AddBook = () => {
                             />
                             {errors.description && <p className='error-p'>{errors.description.message}</p>}
                         </div>
-
-                        <button className="submit-button" style={{marginTop: '20px', height:'40px',width:'280px', borderRadius:'10px'}}>Cadastrar Livro</button>
+                        
+                        <div style={{display:'flex', gap: '10%', justifyContent:'center'}}>
+                            <button className="submit-button1" style={{marginTop: '20px', height:'40px',width:'240px', borderRadius:'10px'}}>Salvar Alterações</button>
+                            <button className="submit-button2" style={{marginTop: '20px', height:'40px',width:'240px', borderRadius:'10px'}} type="button" >Excluir Livro</button>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default AddBook;
+export default EditBook

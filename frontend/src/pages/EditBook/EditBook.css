@@ -1,4 +1,4 @@
-.addBook-container{
+.editBook-container{
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -6,7 +6,7 @@
     height: 100vh;
 }
 
-.addBook-container .addBook-content{
+.editBook-container .editBook-content{
     width: 1000px;
     margin: 40px auto;
     height: 500px;
@@ -17,13 +17,13 @@
     border-radius: 20px;
 }
 
-.addBook-container .addBook-content .img-preview{
+.editBook-container .editBook-content .img-preview{
     width: 333.4px;
     height: auto;
     background-size: cover;
 }
 
-.addBook-container .addBook-content .form-inputs{
+.editBook-container .editBook-content .form-inputs{
     display: flex; 
     flex-direction: column;
     width: 656px;
@@ -32,22 +32,22 @@
     margin: 6px;
 }
 
-.addBook-container .addBook-content .form-inputs .inputs-category h3{
+.editBook-container .editBook-content .form-inputs .inputs-category h3{
     color: #069C56;
 }
 
-.addBook-container .addBook-content .form-inputs .inputs-category p{
+.editBook-container .editBook-content .form-inputs .inputs-category p{
     color: #504f4f;
     font-size: 14px;
     margin-top: 4px;
 }
 
-.addBook-container .addBook-content form{
+.editBook-container .editBook-content form{
     display: flex;
     flex-direction: column;
 }
 
-.addBook-container .addBook-content form .input{
+.editBook-container .editBook-content form .input{
     height: 20px; /* Ajuste conforme necessário */
     box-sizing: border-box; /* Inclui padding e border na largura e altura */
     display: flex;
@@ -56,7 +56,7 @@
     position: relative;
 }
 
-.addBook-container .addBook-content form .input label{
+.editBook-container .editBook-content form .input label{
     position: absolute;
     top: 14px;
     left: 10px;
@@ -68,7 +68,7 @@
     font-weight: 400; /* Ajuste conforme necessário */
 }
 
-.addBook-container .addBook-content form .input input{
+.editBook-container .editBook-content form .input input{
     border: none; /* Remove todas as bordas */
     border-bottom: 1px solid #ACA6A6;
     height: 60px;
@@ -78,18 +78,18 @@
 }
 
 
-.addBook-container .addBook-content form input:focus{
+.editBook-container .editBook-content form input:focus{
     border-color: #069C56;
     color: #000000;
     background-color: #f1f1f1;
 }
 
 
-.addBook-container .addBook-content form .input input.error{
+.editBook-container .editBook-content form .input input.error{
     border-color: red;
 }
 
-.addBook-container .addBook-content form .error-p {
+.editBook-container .editBook-content form .error-p {
     margin-top: 4px;
     color: red;
     font-family: 'Inter', sans-serif;
@@ -98,13 +98,13 @@
 }
 
 
-.addBook-container .addBook-content .form-inputs .input{
+.editBook-container .editBook-content .form-inputs .input{
     height: 20px; /* Ajuste conforme necessário */
     box-sizing: border-box; /* Inclui padding e border na largura e altura */
     position: relative;
 }
 
-.addBook-container .addBook-content .form-inputs .input label{
+.editBook-container .editBook-content .form-inputs .input label{
     position: absolute;
     top: 14px;
     left: 10px;
@@ -117,7 +117,7 @@
     font-weight: 400; /* Ajuste conforme necessário */
 }
 
-.addBook-container .addBook-content .form-inputs .input input{
+.editBook-container .editBook-content .form-inputs .input input{
     border: none; /* Remove todas as bordas */
     border-bottom: 1px solid #ACA6A6;
     height: 60px;
@@ -127,18 +127,18 @@
 }
 
 
-.addBook-container .addBook-content .form-inputs input:focus{
+.editBook-container .editBook-content .form-inputs input:focus{
     border-color: #069C56;
     color: #000000;
     background-color: #f1f1f1;
 }
 
 
-.addBook-container .addBook-content .form-inputs .input input.error{
+.editBook-container .editBook-content .form-inputs .input input.error{
     border-color: red;
 }
 
-.addBook-container .addBook-content .form-inputs .error-p {
+.editBook-container .editBook-content .form-inputs .error-p {
     margin-top: 4px;
     color: red;
     font-family: 'Inter', sans-serif;
@@ -147,7 +147,7 @@
 }
 
 /* Customização Select */
-.addBook-container .addBook-content .form-inputs select{
+.editBook-container .editBook-content .form-inputs select{
     width: 280px;
     height: 40px;
     border: none; /* Remove todas as bordas */
@@ -156,18 +156,18 @@
     outline: none;
 }
 
-.addBook-container .addBook-content .form-inputs select:focus{
+.editBook-container .editBook-content .form-inputs select:focus{
     border-color: #069C56;
     color: #000000;
     background-color: #f1f1f1;
 }
 
-.addBook-container .addBook-content .form-inputs select option{
+.editBook-container .editBook-content .form-inputs select option{
     font-family: 'Inter', sans-serif;
     font-size: 14px;
 }
 
-.addBook-container .addBook-content .form-inputs button{
+.editBook-container .editBook-content .form-inputs button{
     display: flex;
     flex-direction: rows;
     justify-content: center;
@@ -184,9 +184,20 @@
     background-color: white;
 }
 
-.addBook-container .addBook-content .submit-button:hover{
+.editBook-container .editBook-content button:hover{
     color: white;
     background-color: #069C56;
 }
+
+.editBook-container .editBook-content .form-inputs .submit-button2{
+    color: #D3212C;
+    border: 1px solid #D3212C;
+}
+
+.editBook-container .editBook-content .submit-button2:hover{
+    color: white;
+    background-color: #D3212C;
+}
+
 
 

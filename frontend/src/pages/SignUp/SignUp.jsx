@@ -30,7 +30,9 @@ const SignUp = () => {
 
     return(
     <div className="signup-container">
+
         <div className="content-side">
+
             <div className="logo" onClick={() => navigate('/')}>
                 <img src = { LogoBook } alt = "Logo" className="logoBook" style={{ width: '56px', height: '70px' }} />
                 <span>
@@ -38,13 +40,17 @@ const SignUp = () => {
                     <h2>Virtual</h2>
                 </span>
             </div>
+
             <div className="page-content">
                 {renderComponent()}
             </div>    
+
         </div>
+
         <div className="img-side">
             <img src = { Banner } alt = "Livros Caindo" className="books"/>
         </div>
+        
     </div>
   )
 }

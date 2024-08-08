@@ -1,13 +1,14 @@
 import React from "react";
-import Card from "../Card/Card"; 
+import Card from "../Card/Card";
+import EditCard from "../EditCard/EditCard";
 import "./CardContainer.css"
 
-const CardsContainer = ({ cards }) => {
+const CardsContainer = ({ cards, option }) => {
     // Função para dividir os cards em grupos de quatro
     const splitIntoGroupsOfFour = (cards) => {
         const groups = [];
-        for (let i = 0; i < cards.length; i += 4) {
-            groups.push(cards.slice(i, i + 4));
+        for (let i = 0; i < cards.length; i += 5) {
+            groups.push(cards.slice(i, i + 5));
         }
         return groups;
     };
@@ -20,7 +21,11 @@ const CardsContainer = ({ cards }) => {
             {cardGroups.map((group, index) => (
                 <div key={index} className="cards-group">
                     {group.map((card, cardIndex) => (
-                        <Card key={cardIndex} {...card} />
+                        option === 1 ? (
+                            <Card key={cardIndex} {...card} />
+                        ) : (
+                            <EditCard key={cardIndex} {...card} />
+                        )
                     ))}
                 </div>
             ))}

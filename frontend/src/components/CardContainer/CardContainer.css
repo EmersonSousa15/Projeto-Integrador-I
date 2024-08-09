@@ -1,11 +1,16 @@
 .book-container-group{
     margin-top: 30px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     margin: auto;
 }
 
 .cards-group {
+    width: 90%;
     display: flex;
-    gap: 40px;
-    margin: 20px;
+    gap: 5%;
+    margin: 20px auto;
+    flex-wrap: wrap;
 }

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
 import './Card.css'
 
-const Card = ({id, title, author, image}) => {
+const Card = ({card}) => {
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -13,11 +13,11 @@ const Card = ({id, title, author, image}) => {
 
     return (
         <div className="card-container">
-            <img className="book-image" src={image} alt={title} onClick={() => navigate(`/${id}`)} />
+            <img className="book-image" src={card.image} alt={card.title} onClick={() => navigate(`/${card.id}`)} />
             <div className="book-info">
                 <div className="book-data">
-                    <h1>{title}</h1>
-                    <h2>{author}</h2>
+                    <h1>{card.title}</h1>
+                    <h2>{card.author}</h2>
                 </div>
                 {isFavorite ? (
                         <IoMdHeart className="filled-heart" size={33} onClick={toggleFavorite} />

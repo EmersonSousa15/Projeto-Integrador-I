@@ -3,18 +3,26 @@ import NavBar from '../../components/NavBar/NavBar';
 import './AddBook.css'
 import { useForm } from 'react-hook-form';
 import  SemCapa  from '../../assets/SemCapa.jpg'
+import { bookRegister } from '../../services/books/bookRegister';
+import { useUserContext } from '../../Context/UserContext';
 
 const AddBook = () => {
     const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({mode: 'onChange'});
     const [ stateButton, setStateButton ] = useState('Novo');
     const [imgLink, setImgLink] = useState(''); // Estado para armazenar o link da imagem
+    const { userData } = useUserContext();
 
     /* Envia os dados do formulário */
     const onSubmit = (data) => {
+
         data.price = parseFloat(data.price);
         data.inventory = parseInt(data.inventory);
         data.state = stateButton;
+
+        data = {...data, username: userData.emailUsuario}
         console.log(data);
+        
+        bookRegister(data);
     };
 
     const stateHandleClick = (button) => {

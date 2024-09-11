@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-hook-form": "^7.52.0",
-    "react-input-mask": "^2.0.4"
-  }
-}

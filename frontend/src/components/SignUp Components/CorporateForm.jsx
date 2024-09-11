@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { PageChange } from '../../contexts/pageChange';
 import { useContext } from 'react';
-import { userRegister } from '../../services/users/userRegister';
+import { userRegister } from '../../services/users/userRegister.js';
 import { useNavigate } from 'react-router-dom';
-import { RegisterUserInfoLogin, UIUserName, UIUserTelephone} from './UserForm';
+import { RegisterUserInfoLogin, UIUsername, UIUserTelephone} from './UserForm';
 
-const IndividualForm = () => {
+const CorporationForm = () => {
     const { count, setCount } = useContext(PageChange);
     const { register, handleSubmit, formState: { errors }, setError, trigger, watch, setValue } = useForm({ mode: 'onChange' });
     const [changePage, setChangePage] = useState(true);
@@ -22,7 +22,13 @@ const IndividualForm = () => {
         if (registerResponse === 200) {
             navigate('/login')
         } else {
-            setError(registerResponse[2], { type: registerResponse[1], message: registerResponse[0] })
+            if (registerResponse.code === 'EMAIL_ALREADY_EXISTS') {
+                setChangePage(true)
+                setError('email', { type: registerResponse.code, message: registerResponse.message})
+            }else{
+                setError('cnpj', { type: registerResponse.code, message: registerResponse.message})
+            }
+
         }
     };
 
@@ -68,7 +74,7 @@ const IndividualForm = () => {
                     {!changePage &&
                         <>
                             {/* Nome */}
-                            <UIUserName register={register} errors={errors} />
+                            <UIUsername register={register} errors={errors} />
 
                             {/* CNPJ */}
                             <div className="input">
@@ -104,4 +110,4 @@ const IndividualForm = () => {
     );
 };
 
-export default IndividualForm;
+export default CorporationForm;

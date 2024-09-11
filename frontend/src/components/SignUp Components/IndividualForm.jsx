@@ -4,7 +4,7 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import { PageChange } from '../../contexts/pageChange';
 import { userRegister } from '../../services/users/userRegister';
 import { useNavigate } from 'react-router-dom'
-import { RegisterUserInfoLogin, UIUserTelephone, UIUserName } from './UserForm';
+import { RegisterUserInfoLogin, UIUserTelephone, UIUsername } from './UserForm';
 
 const IndividualForm = () => {
     const { count, setCount } = useContext(PageChange);
@@ -16,11 +16,17 @@ const IndividualForm = () => {
         const { confirmPassword, ...formData } = data;
         formData.identity = 'fisica';
         const registerResponse = await userRegister(formData, setChangePage)
-
+        
         if (registerResponse === 200) {
             navigate('/login')
         } else {
-            setError(registerResponse[2], { type: registerResponse[1], message: registerResponse[0] })
+            if (registerResponse.code === 'EMAIL_ALREADY_EXISTS') {
+                setChangePage(true)
+                setError('email', { type: registerResponse.code, message: registerResponse.message})
+            }else{
+                setError('cpf', { type: registerResponse.code, message: registerResponse.message})
+            }
+
         }
     };
 
@@ -65,7 +71,7 @@ const IndividualForm = () => {
                     {!changePage &&
                         <>
                             {/* Nome */}
-                            <UIUserName register={register} errors={errors} />
+                            <UIUsername register={register} errors={errors} />
 
                             {/* CPF */}
                             <div className="input">

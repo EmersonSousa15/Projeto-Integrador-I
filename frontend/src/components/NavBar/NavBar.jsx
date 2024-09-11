@@ -8,12 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { CiHeart } from "react-icons/ci";
 import { TfiBook } from "react-icons/tfi";
 import Logo from '../../assets/LogoBook.png'
+import { useUserContext } from "../../Context/UserContext";
 
 
 const NavBar = () => {
     const [activeSubMenu, setActiveSubMenu] = useState(null); // null, 'account', 'book'
     const timeoutRef = useRef(null);
     const navigate = useNavigate();
+    const {userData} = useUserContext();
 
     const handleMouseEnter = (submenu) => {
         clearTimeout(timeoutRef.current);
@@ -85,7 +87,7 @@ const NavBar = () => {
                         onMouseLeave={handleMouseLeave}
                     >
                         <VscAccount size={25} className="account-icon" style={{ color: "#fff" }} />
-                        <p className="welcome">Olá, usuário</p>
+                        <p className="welcome">Olá, {userData.nomeUsuario != "" ? userData.nomeUsuario : 'Usuário'}</p>
                         {activeSubMenu === 'account' &&
                             <ul className="submenu">
                                 <li onClick={logInClick}><span>Log in</span></li>

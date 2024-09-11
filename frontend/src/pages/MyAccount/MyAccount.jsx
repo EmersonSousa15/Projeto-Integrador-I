@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import NavBar from "../../components/NavBar/NavBar";
 import Icon from "../../assets/minhacontapng.png";
 import "./MyAccount.css";
+import { useUserContext } from '../../Context/UserContext';
 
 export const MyAccount = () => {
     const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({ mode: 'onChange' });
+    const { userData } = useUserContext();
 
     const onSubmit = (data) => {
         const { confirmPassword, ...formData } = data; // Remove o campo confirmPassword dos dados
@@ -99,6 +101,8 @@ export const MyAccount = () => {
                                 <input style={{ width: '100%' }} type="text"
                                     {...register('name', { required: { value: true, message: 'Este campo é obrigatório.' } })}
                                     className={errors.name ? 'error' : ''}
+                                    
+                                    value={userData? userData.nomeUsuario : ''}
                                 />
                                 {errors.name && <p className='error-p'>{errors.name.message}</p>}
                             </div>
@@ -114,6 +118,7 @@ export const MyAccount = () => {
                                     })}
                                     onChange={(e) => handleCPFChange(e, 'cpf')}
                                     className={errors.cpf ? 'error' : ''}
+                                    value={userData ? userData.cpf : ''}
                                 />
                                 {errors.cpf && <p className='error-p'>{errors.cpf.message}</p>}
                             </div>
@@ -132,6 +137,8 @@ export const MyAccount = () => {
                                         }
                                     })}
                                     className={errors.email ? 'error' : ''}
+                                    
+                                    value={userData ? userData.emailUsuario : ''}
                                 />
                                 {errors.email && <p className='error-p'>{errors.email.message}</p>}
                             </div>
@@ -147,6 +154,8 @@ export const MyAccount = () => {
                                     })}
                                     onChange={handleTelephoneChange}
                                     className={errors.telephone ? 'error' : ''}
+                                    
+                                    value={userData? userData.telefoneUsuario : ''}
                                 />
                                 {errors.telephone && <p className='error-p'>{errors.telephone.message}</p>}
                             </div>

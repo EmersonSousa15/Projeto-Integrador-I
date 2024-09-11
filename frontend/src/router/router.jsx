@@ -10,6 +10,8 @@ import ShowBook from '../pages/ShowBook/ShowBook'
 import EditBook from '../pages/EditBook/EditBook'
 import MyBooks from '../pages/MyBooks/MyBooks'
 import MyAccount from '../pages/MyAccount/MyAccount'
+import Cart from '../pages/Cart/Cart'
+import MyPurchases from '../pages/MyPurchases/MyPurchases'
 
 const router = createBrowserRouter([
     {
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
                 path: '/minhaconta',
                 element: <MyAccount/>
             },
+            {
+                path: '/carrinho',
+                element: <Cart/>
+            },
+            {
+                path: '/minhascompras',
+                element: <MyPurchases/>
+            }
 
         ] 
     }

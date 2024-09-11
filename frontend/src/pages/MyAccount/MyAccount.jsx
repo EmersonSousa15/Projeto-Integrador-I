@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import NavBar from "../../components/NavBar/NavBar";
 import Icon from "../../assets/minhacontapng.png";
+import Footer from '../../assets/Footer.jpg'
 import "./MyAccount.css";
 
 export const MyAccount = () => {
@@ -372,6 +373,7 @@ export const MyAccount = () => {
                     </form>
                 </div>
             </div>
+            <img src={Footer} alt="footer"/>
         </div>
     )
 }

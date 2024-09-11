@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import Filmes from "../../assets/Filmes.jpg"
 import "./Home.css";
+import Footer from '../../assets/Footer.jpg'
 import Card from "../../components/Card/Card";
 
 export const Home = () => {
@@ -21,7 +22,7 @@ export const Home = () => {
       </div>
       <img src = {Filmes} alt = "Livros que viraram filmes" className="filmes-image"/>
       <h2>Livros que viraram filmes</h2>
-
+      <img src={Footer} alt="footer"/>
     </div>
     
   )

@@ -11,6 +11,10 @@
     width: 90%;
     display: flex;
     gap: 5%;
-    margin: 20px auto;
+    margin: 20px;
     flex-wrap: wrap;
+}
+
+.cards-group > * {
+    margin-bottom: 30px; /* Ajuste conforme necessário */
 }

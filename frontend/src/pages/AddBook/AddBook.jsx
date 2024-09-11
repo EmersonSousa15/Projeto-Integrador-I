@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import './AddBook.css'
+import  Footer  from '../../assets/Footer.jpg'
 import { useForm } from 'react-hook-form';
 import  SemCapa  from '../../assets/SemCapa.jpg'
 
@@ -225,6 +226,7 @@ const AddBook = () => {
                     </form>
                 </div>
             </div>
+            <img src={Footer} alt="footer"/>
         </div>
     );
 }

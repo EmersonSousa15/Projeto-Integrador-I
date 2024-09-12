@@ -1,4 +1,4 @@
-.showbook-container{
+.showbook-container {
     background-color: #E5ECE9;
     display: flex;
     flex-direction: column;
@@ -7,39 +7,39 @@
     height: 100vh;
 }
 
-.showbook-container .showbook-content{
+.showbook-container .showbook-content {
     width: 1150px;
     margin: 40px auto;
     height: 500px;
     background-color: white;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     border-radius: 20px;
 }
 
-.showbook-container .showbook-content .book-image{
+.showbook-container .showbook-content .book-image {
     width: 340px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
-.showbook-container .showbook-content .showbook-info{
+.showbook-container .showbook-content .showbook-info {
     width: 100%;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     padding: 30px;
 }
 
-.showbook-container .showbook-content .showbook-info .description{
+.showbook-container .showbook-content .showbook-info .description {
     height: 100%;
     width: 50%;
 }
 
-.showbook-container .showbook-content .showbook-info .addCart{
+.showbook-container .showbook-content .showbook-info .addCart {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #069C56;
+    background-color: #069C56; /* Default background color */
     color: white;
     text-align: center;
     border-radius: 10px;
@@ -49,4 +49,12 @@
     align-items: center;
     width: 90%; 
     height: 45px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+}
+
+.showbook-container .showbook-content .showbook-info .addCart.disabled {
+    background-color: #a6a6a6; /* Light gray color */
+    color: #454545; /* Darker gray text */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    pointer-events: none; /* Disable click events */
 }

@@ -28,10 +28,6 @@ const NavBar = () => {
         }, 100);
     };
 
-    const handleCartClick = () => {
-        // Lógica para o carrinho
-    };
-
     const heartClick = () => {
         navigate('/favoritos');
     };
@@ -73,8 +69,8 @@ const NavBar = () => {
                             <ul className="book-submenu">
                                 <li onClick={() => navigate('/cadastrarlivro')}>Cadastrar Livro</li>
                                 <li onClick={() => navigate('/meuslivros')}>Meus Livros</li>
-                                <li>Minhas Compras</li>
-                                <li>Minhas Vendas</li>  
+                                <li onClick={() => navigate('/minhascompras')}>Minhas Compras</li>
+                                <li onClick={() => navigate('/minhasvendas')}>Minhas Vendas</li>  
                             </ul>
                         }
                     </div>
@@ -99,7 +95,7 @@ const NavBar = () => {
                     </div>
 
                     
-                    <BsCart3 className="cart-icon" size={25} onClick={handleCartClick} />
+                    <BsCart3 className="cart-icon" size={25} onClick={() => navigate('/carrinho')} />
                 </div>
             </header>
         </div>

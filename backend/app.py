@@ -252,8 +252,8 @@ def mostrarlivros():
         print("Error", e)
         return jsonify({'error':'Internal Server Error'}), 500
         
-@app.route('/buscarlivro', methods=['GET', 'POST'])
-def buscarlivro():
+@app.route('/buscarlivro/<int:id>', methods=['GET', 'POST'])
+def buscarlivro(id):  # Adicione o parâmetro id aqui
     try:
         if request.method == 'OPTIONS':
             response = app.response_class()
@@ -263,21 +263,23 @@ def buscarlivro():
             response.headers.add('Access-Control-Allow-Credentials', 'true')
             response.status_code = 200
             return response
-    
-        data = request.get_json()
-        livro = data['id']
 
+        # Conectando ao banco de dados
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT * FROM livros WHERE  = %s', (livro,))
-        data = cursor.fecthall()
+        # Use %s ao invés de %i para parâmetros no SQL
+        cursor.execute('SELECT * FROM livros WHERE idLivro = %s', (id,))
+        
+        rows = cursor.fetchall()
+        colunas = [i[0] for i in cursor.description]  # Pegando os nomes das colunas
+        livros = [dict(zip(colunas, row)) for row in rows]  # Convertendo para lista de dicionários
         
         cursor.close()
         
-        return jsonify({'livros' : data}), 200
+        return jsonify({'livros': livros}), 200  # Retorna a lista de livros
         
     except Exception as e:
         print("error", e)
-        return jsonify({'error':'Internal Server Error'}), 500
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 @app.route('/pegarlivro', methods=['GET', 'POST'])
 def pegarlivro():
@@ -308,14 +310,3 @@ def pegarlivro():
 
 if __name__ == '__main__':
     app.run()
-
-"""
-    nomeVendedor
-    idVendedor
-    editoraLivro
-    fotoLivro
-    precoLivro
-    descricaoLivro
-    estadoLivro
-    estoqueLivro
-"""

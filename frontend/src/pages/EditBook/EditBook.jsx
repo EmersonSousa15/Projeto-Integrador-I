@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import { useForm } from 'react-hook-form';
 import  SemCapa  from '../../assets/SemCapa.jpg'
+import  Footer  from '../../assets/Footer.jpg'
 import "./EditBook.css";
 
 export const EditBook = () => {
@@ -257,6 +258,7 @@ export const EditBook = () => {
                     </form>
                 </div>
             </div>
+            <img src={Footer} alt="footer"/>
         </div>
     )
 }

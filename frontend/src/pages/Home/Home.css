@@ -1,8 +1,10 @@
 .inicio-container {
+    background-color: #E5ECE9;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
 }
 
 .inicio-container .welcome-container {
@@ -28,4 +30,13 @@
     font-family: 'Inter Light', sans-serif;
     margin-top: 5px; /* Adiciona margem acima do título */
     text-align: center;
+}
+
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3;
+    justify-content: left;
+    margin: 30px;
+
 }

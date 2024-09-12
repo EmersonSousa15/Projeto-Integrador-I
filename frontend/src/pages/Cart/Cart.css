@@ -1,0 +1,89 @@
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background: #E5ECE9;
+    height: 100%;   
+}
+
+.cart-container .cart-content{
+    width: 1200px;
+    margin: 40px auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction:column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+}
+
+.cart-container .cart-content .cart-title {
+    display: flex;
+    flex-direction: row;
+    font-size: 26px;
+    font-weight: bold;
+    gap: 1.5%;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.cart-container .cart-content .cart-left{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    width: 60%;
+    margin-top: 20px;
+}
+
+.cart-container .cart-content .cart-left .cart-columns{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    color: #069C56;
+    font-style: italic;
+    margin-top: 3%;
+    display: flex;
+    gap: 80px;
+    align-items:center;
+    padding: 4px 20px 4px 10px;
+}
+
+.cart-container .cart-content .cart-left .cart-items{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    padding: 10px 20px;
+    margin-top: 2%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.cart-container .cart-content .cart-right{
+    border: solid 1px #FF681E;
+    width: 96%;
+    height: 286px;
+    border-radius: 16px;
+    margin-top: 36px;
+    margin-left: 20px;
+    
+}
+
+.cart-container .cart-content .div-right button{
+    border-radius: 4px;
+    border: 1px solid #069C56; /* sempre fazer botoes assim */
+    width: 96%;
+    height: 30px;
+    font-weight: 100;
+    font-size: 18px;
+    color: #069C56;
+    cursor: pointer;
+    background-color: white;
+    margin-top: 16px;
+    border-radius: 10px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+
+.cart-container .cart-content .div-right button:hover{
+    color: white;
+    background-color: #069C56;
+}

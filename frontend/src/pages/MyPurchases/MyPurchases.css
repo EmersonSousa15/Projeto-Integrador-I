@@ -1,0 +1,58 @@
+.mypurchases-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background: #E5ECE9;
+    height: 100%;   
+}
+
+.mypurchases-container .mypurchases-content{
+    width: 1200px;
+    margin: 40px auto;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction:column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+}
+
+.mypurchases-container .mypurchases-content .mypurchases-title {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+    font-weight: bold;
+    gap: 1%;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.mypurchases-container .mypurchases-content .mypurchases-items{
+    display: flex;
+    flex-direction: column;
+}
+
+.mypurchases-container .mypurchases-content .mypurchases-items .mypurchases-columns{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    color: #069C56;
+    width: 80%;
+    margin:auto;
+    font-style: italic;
+    margin-top: 3%;
+    display: flex;
+    gap: 80px;
+    align-items:center;
+    padding: 4px 20px 4px 10px;
+}
+
+.mypurchases-container .mypurchases-content .mypurchases-items .mypurchases-items{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    padding: 10px 20px;
+    margin-top: 2%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+

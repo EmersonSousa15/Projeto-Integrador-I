@@ -4,7 +4,6 @@ import EditCard from "../EditCard/EditCard";
 import "./CardContainer.css"
 
 const CardsContainer = ({ cards, option }) => {
-
     return (
         <div className="book-container-group">
                 <div className="cards-group">

@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import CardsContainer from "../../components/CardContainer/CardContainer";
 import Banner from '../../assets/Favoritos.jpg'
+import Footer from '../../assets/Footer.jpg'
 import "./MyBooks.css";
 
 export const Favoritos = () => {
@@ -22,6 +23,7 @@ export const Favoritos = () => {
       <NavBar/>
       <img src = { Banner } alt = "Minhas vendas" className="banner"/>
       <CardsContainer cards={favoritos} option={0}/>
+      <img src={Footer} alt="footer"/>
     </div>
     
   )

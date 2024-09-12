@@ -10,6 +10,8 @@ import ShowBook from '../pages/ShowBook/ShowBook'
 import EditBook from '../pages/EditBook/EditBook'
 import MyBooks from '../pages/MyBooks/MyBooks'
 import MyAccount from '../pages/MyAccount/MyAccount'
+import Cart from '../pages/Cart/Cart'
+import MyPurchases from '../pages/MyPurchases/MyPurchases'
 
 const router = createBrowserRouter([
     {
@@ -36,8 +38,8 @@ const router = createBrowserRouter([
                 element: <PageChangeProvider><SignUp /></PageChangeProvider>
             },
             {
-                path: '/:id',
-                element: <ShowBook/>
+                path: '/livro/:id', // rota para um livro específico
+                element: <ShowBook />
             },
             {
                 path: '/editarlivro',
@@ -51,9 +53,16 @@ const router = createBrowserRouter([
                 path: '/minhaconta',
                 element: <MyAccount/>
             },
-
+            {
+                path: '/carrinho',
+                element: <Cart/>
+            },
+            {
+                path: '/minhascompras',
+                element: <MyPurchases/>
+            }
         ] 
     }
 ])
 
-export default router
+export default router;

@@ -6,12 +6,14 @@ import { useForm } from 'react-hook-form';
 import  SemCapa  from '../../assets/SemCapa.jpg'
 import { bookRegister } from '../../services/books/bookRegister';
 import { useUserContext } from '../../Context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddBook = () => {
     const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({mode: 'onChange'});
     const [ stateButton, setStateButton ] = useState('Novo');
     const [imgLink, setImgLink] = useState(''); // Estado para armazenar o link da imagem
     const { userData } = useUserContext();
+    const navigate = useNavigate();
 
     /* Envia os dados do formulário */
     const onSubmit = (data) => {
@@ -20,8 +22,9 @@ const AddBook = () => {
         data.inventory = parseInt(data.inventory);
         data.state = stateButton;
 
-        data = {...data, username: userData.emailUsuario}
-        console.log(data);
+        data = {...data, email: userData.email}
+        
+        navigate('/meuslivros')
         
         bookRegister(data);
     };

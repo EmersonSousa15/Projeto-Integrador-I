@@ -7,13 +7,13 @@ const EditCard = ({card}) => {
     const navigate = useNavigate();
     return (
         <div className="edit-card-container">
-            <img className="book-image" src={card.image} alt={card.title}/>
+            <img className="book-image" src={card.linkImagem} alt={card.title}/>
             <div className="book-info">
                 <div className="book-data">
-                    <h1>{card.title}</h1>
-                    <h2>{card.author}</h2>
+                    <h1>{card.nomeLivro}</h1>
+                    <h2>{card.nomeAutor}</h2>
                 </div>
-                <LiaEditSolid style={{color:'#FF980E'}} size={33} onClick={() => navigate('/editarlivro')}/>
+                <LiaEditSolid style={{color:'#FF980E'}} size={33} onClick={() => navigate(`/editarlivro/${card.idLivro}`)}/>
             </div>
         </div>
     )

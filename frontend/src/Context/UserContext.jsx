@@ -5,10 +5,26 @@ const UserContext = createContext(null);
 export const UserProvider = ({ children }) => {
 
     const [userData, setUserData] = useState({
-        cpf: "",
-        emailUsuario: "",
-        nomeUsuario: "",
-        telefoneUsuario: "",
+        identity: "",
+        email: "",
+        name: "",
+        telephone: "",
+        accountCPF: "",
+        accountHolder: "",
+        accountNumber: "",
+        agencyNumber: "",
+        accountCode: "",
+        cep: "",
+        city: "",
+        neighborhood: "",
+        residenceNumber: "",
+        state: "",
+        street: "",
+        adicional: "",
+        cardName: "",
+        numbercard: "",
+        cardExpireDate: "",
+        cvvcard: "",
     });
 
 

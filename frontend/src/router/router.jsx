@@ -5,13 +5,14 @@ import Favoritos from '../pages/Favoritos/Favoritos'
 import SignUp from '../pages/SignUp/SignUp'
 import Home from '../pages/Home/Home'
 import AddBook from '../../src/pages/AddBook/AddBook'
-import { PageChangeProvider } from '../contexts/pageChange'
+import { PageChangeProvider } from '../Context/pageChange'
 import ShowBook from '../pages/ShowBook/ShowBook'
 import EditBook from '../pages/EditBook/EditBook'
 import MyBooks from '../pages/MyBooks/MyBooks'
 import MyAccount from '../pages/MyAccount/MyAccount'
 import Cart from '../pages/Cart/Cart'
 import MyPurchases from '../pages/MyPurchases/MyPurchases'
+import MySales from '../pages/MySales/MySales'
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
                 element: <ShowBook />
             },
             {
-                path: '/editarlivro',
+                path: '/editarlivro/:id',
                 element: <EditBook/>
             },
             {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: '/minhascompras',
                 element: <MyPurchases/>
+            },
+            {
+                path: '/minhasvendas',
+                element: <MySales/>
             }
         ] 
     }

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
-import { PageChange } from '../../contexts/pageChange';
+import { PageChange } from '../../Context/pageChange';
 import { useContext } from 'react';
 import { userRegister } from '../../services/users/userRegister.js';
 import { useNavigate } from 'react-router-dom';

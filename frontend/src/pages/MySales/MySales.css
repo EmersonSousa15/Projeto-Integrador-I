@@ -1,4 +1,4 @@
-.mypurchases-container {
+.mysales-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -7,7 +7,7 @@
     height: 100vh;
 }
 
-.mypurchases-container .mypurchases-content {
+.mysales-container .mysales-content {
     width: 1100px;
     margin: 40px auto;
     background-color: white;
@@ -19,7 +19,7 @@
     padding: 0 0 60px 0;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-title {
+.mysales-container .mysales-content .mysales-title {
     display: flex;
     flex-direction: row;
     font-size: 24px;
@@ -30,13 +30,13 @@
     width: 100%;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-items {
+.mysales-container .mysales-content .mysales-items {
     display: flex;
     flex-direction: column;
     width: 90%;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-columns {
+.mysales-container .mysales-content .mysales-columns {
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid rgb(67, 67, 67);
@@ -50,56 +50,58 @@
     text-align: center;
     padding: 4px 50px 4px 6px;
 }
-.mypurchases-columns .mypurchases-header-content{
+.mysales-columns .mysales-header-content{
     width: 90%;
     display: flex;
     margin-left: 15px;
     justify-content: space-between;
 }
 
-.mypurchases-columns .mypurchases-header-content span{
+.mysales-columns .mysales-header-content span{
     text-align: center;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-items .mypurchases-information {
+.mysales-container .mysales-content .mysales-items .mysales-information {
     display: flex;
     font-style: italic;
     margin-top: 3%;
     width: 100%;
     margin-left: 60px;
     justify-content: space-between;
+    
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-information-content{
+.mysales-container .mysales-content .mysales-information-content{
     width: 90%;
     display: flex;
     justify-content: space-between;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-items .mypurchases-information p {
+.mysales-container .mysales-content .mysales-items .mysales-information p {
     font-size: 14px;
     color:#272727;
     text-align: center;
     width: 200px;
+    margin: auto;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-information img{
+.mysales-container .mysales-content .mysales-information img{
     margin-right: 60px;
 }
 
 /* Estilo para o ícone de toggle */
-.mypurchases-information img {
+.mysales-information img {
     transition: transform 0.3s ease; /* Transição suave */
     cursor: pointer;
 }
 
 /* Quando o item estiver aberto, o ícone rotaciona 180 graus */
-.mypurchases-information img.rotated {
+.mysales-information img.rotated {
     transform: rotate(180deg);
 }
 
 /* Transição suave para a div que expande */
-.mypurchases-details {
+.mysales-details {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease; /* Suaviza a expansão e contração */
@@ -114,7 +116,7 @@
 }
 
 /* Quando a div está aberta */
-.mypurchases-details.open {
+.mysales-details.open {
     max-height: 500px; /* Define uma altura máxima para a animação */
     border-bottom: 1px solid rgb(158, 158, 158);
     display: flex;
@@ -126,13 +128,54 @@
     align-items: left;
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-items.open {
+.mysales-container .mysales-content .mysales-items.open {
     border-bottom: 0.2px rgb(158, 158, 158);
 }
 
-.mypurchases-container .mypurchases-content .mypurchases-items .mypurchases-products{
+.mysales-container .mysales-content .mysales-items .mysales-products{
     padding: 10px 0px 10px 0;
     margin-top: 1%;
     display: flex;
     flex-direction: row;
+}
+
+.mysales-container .mysales-content form input{
+    border: 1px solid #069C56;
+    border-radius: 10px;
+    margin-right: 16px;
+    height: 26px;
+    text-align: center;
+    width: 100px;
+}
+
+.mysales-container .mysales-content form label{
+    text-align: center;
+    margin-right: 6px;
+}
+
+.mysales-container .mysales-content form{
+    margin-left: 56px;
+    margin-top: 30px;
+}
+
+.mysales-container .mysales-content form button{
+    border: 1px solid #069C56;
+    background: white;
+    border-radius: 6px;
+    margin-right: 16px;
+    height: 26px;
+    text-align: center;
+    width: 100px;
+    color:#069C56;
+    cursor: pointer;
+}
+
+.mysales-container .mysales-content form button:hover{
+    background: #069C56;
+    color:white
+}
+
+
+.mysales-queue{
+    margin: 20px auto;
 }

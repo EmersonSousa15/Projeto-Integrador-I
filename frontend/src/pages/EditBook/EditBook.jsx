@@ -1,61 +1,112 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import { useForm } from 'react-hook-form';
-import  SemCapa  from '../../assets/SemCapa.jpg'
-import  Footer  from '../../assets/Footer.jpg'
-import "./EditBook.css";
+import SemCapa from '../../assets/SemCapa.jpg';
+import Footer from '../../assets/Footer.jpg';
+import httpCliente from '../../services/httpCliente';
+import './EditBook.css';
+import { useParams } from 'react-router-dom';
+import { deleteBook } from '../../services/books/deleteBook.js';
+import { bookUpdate } from '../../services/books/bookUpdate.js';
+import { useUserContext } from '../../Context/UserContext.jsx';
 
 export const EditBook = () => {
-    const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({mode: 'onChange'});
-    const [ stateButton, setStateButton ] = useState('Novo');
-    const [imgLink, setImgLink] = useState(''); // Estado para armazenar o link da imagem
-
-    const teste = {
-        authorName : "JOSUÉ LEMOS MESQUITA",
-        bookName : "JOSUÉ LEMOS MESQUITA",
-        description : "dd",
-        genre : "terror",
-        inventory : 4,
-        isbn : "323-23-23232-32-3",
-        linkImg : "https://th.bing.com/th/id/OIP.nQlzmrFpKiFiEG93V2qACQHaLH?rs=1&pid=ImgDetMain",
-        price : 4,
-        publisher : "A",
-        state : "Usado"
-    }
-
+    const { register, handleSubmit, formState: { errors }, setValue, control } = useForm({ mode: 'onChange' });
+    const [stateButton, setStateButton] = useState('Novo');
+    const {id} = useParams('id');
+    const [book, setBook] = useState({});
+    const [flag, setFlag] = useState('');
+    const {userData} = useUserContext();
+    
+    // Fetch book data from API
     useEffect(() => {
-        // Inicializa os campos do formulário com os valores do objeto `teste`
-        setValue('authorName', teste.authorName);
-        setValue('bookName', teste.bookName);
-        setValue('description', teste.description);
-        setValue('genre', teste.genre);
-        setValue('inventory', teste.inventory);
-        setValue('isbn', teste.isbn);
-        setValue('linkImg', teste.linkImg);
-        setValue('price', teste.price);
-        setValue('publisher', teste.publisher);
-        setStateButton(teste.state);
-        setImgLink(teste.linkImg);
-    }, [setValue]);
+        const fetchBook = async () => {
+            try {
+                const response = await httpCliente.get(`http://127.0.0.1:5000/buscarlivro/${id}`);
+                console.log(response);
+                setBook(response.data.livros[0]);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+        fetchBook();
+    }, [id]);
 
-    /* Envia os dados do formulário */
-    const onSubmit = (data) => {
-        data.price = parseFloat(data.price);
-        data.inventory = parseInt(data.inventory);
-        data.state = stateButton;
+    
+
+    // Initialize form fields with book data
+    useEffect(() => {
+        if (book) {
+            setValue("descricaoLivro", book.descricaoLivro);
+            setValue("editoraLivro", book.editoraLivro);
+            setValue("estadoLivro", book.estadoLivro);
+            setValue("estoqueLivro", book.estoqueLivro);
+            setValue("generoLivro", book.generoLivro);
+            setValue("idLivro", book.idLivro);
+            setValue("idVendedor", book.idVendedor);
+            setValue("isbn", book.isbn);
+            setValue("linkImagem", book.linkImagem);
+            setValue("nomeAutor", book.nomeAutor);
+            setValue("nomeLivro", book.nomeLivro);
+            setValue("nomeVendedor", book.nomeVendedor);
+            setValue("precoLivro", book.precoLivro);
+        }
+    }, [book, setValue]);
+
+    // Handle form submission
+    const onSubmit = (data, event) => {
+        data.precoLivro = parseFloat(data.precoLivro);
+        data.estoqueLivro = parseInt(data.estoqueLivro);
+        data.estadoLivro = stateButton;
         console.log(data);
+
+        if (flag == 'save') {
+            // Botão "Salvar Alterações" foi clicado
+            saveUpdates(data);
+        } else if (flag == 'delete') {      
+            // Botão "Excluir Conta" foi clicado
+            deleteAccount(data);
+        } else {
+            console.error('Botão não identificado');
+        }
     };
 
+
+    const saveUpdates = async (data) => {
+
+        console.log(data);
+
+        const response = await bookUpdate({...data, email: userData.email});
+        if (response.code === 200) {
+            
+
+            alert('Livro atualizado com sucesso!')
+        } else {
+            console.log(response)
+        }
+    }
+
+    const deleteAccount = async (data) => {
+        const response = await deleteBook({...data, email: userData.email});
+        if (response.code === 200) {
+            navigate('/')
+            alert('Livro deletado com sucesso!')
+        } else {
+            console.log(response)
+        }
+    }
+
+    // Handle button state change
     const stateHandleClick = (button) => {
         setStateButton(button);
     };
 
-    // Função para atualizar o link da imagem
+    // Update link image
     const handleImgLinkChange = (e) => {
-        setImgLink(e.target.value);
+        setValue('linkImagem', e.target.value);
     };
 
-    // Funções para formatação do ISBN
+    // Format ISBN
     const handleIsbnChange = (e) => {
         const { value } = e.target;
         const formattedValue = formatIsbn(value);
@@ -63,9 +114,7 @@ export const EditBook = () => {
     };
 
     const formatIsbn = (value) => {
-        // Remove non-numeric characters
         const cleanValue = value.replace(/\D/g, '');
-        // Format ISBN with dashes
         const formattedValue = cleanValue
             .slice(0, 13)
             .replace(/(\d{3})(\d{0,2})(\d{0,5})(\d{0,2})(\d{0,1})/, (match, p1, p2, p3, p4, p5) => {
@@ -82,16 +131,14 @@ export const EditBook = () => {
 
     return (
         <div className="editBook-container">
-            <NavBar/>
+            <NavBar />
             <div className="editBook-content">
-                {/* Textinho */}
                 <div className="img-preview">
-                    {!imgLink && <img src={ SemCapa } alt="Book Preview" style={{ width:'100%', height: '100%', borderTopLeftRadius:'20px', borderBottomLeftRadius:'20px', maxWidth: '333.4px'}} />}
-                    {imgLink && <img src={imgLink} alt="Book Preview" style={{ height: '100%', borderTopLeftRadius:'20px', borderBottomLeftRadius:'20px', maxWidth: '333.4px'}} />}
+                    {!book.linkImagem && <img src={SemCapa} alt="Book Preview" style={{ width: '100%', height: '100%', borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px', maxWidth: '333.4px' }} />}
+                    {book.linkImagem && <img src={book.linkImagem} alt="Book Preview" style={{ height: '100%', borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px', maxWidth: '333.4px' }} />}
                 </div>
 
                 <div className="form-inputs">
-
                     <div className="inputs-category">
                         <h3>Informações do produto</h3>
                         <p>Por favor, preencha os campos abaixo com as informações precisas do livro. Certifique-se de inserir os dados corretamente.</p>
@@ -99,47 +146,47 @@ export const EditBook = () => {
 
                     <form onSubmit={handleSubmit(onSubmit)}>             
                         {/* Link da Imagem */}
-                        <div className="input" style={{width:'100%', marginTop:'14px'}}>
-                            <label htmlFor="linkImg">Link da Imagem</label>
+                        <div className="input" style={{ width: '100%', marginTop: '14px' }}>
+                            <label htmlFor="linkImagem">Link da Imagem</label>
                             <input type="url"
-                                {...register('linkImg', { 
+                                {...register('linkImagem', { 
                                     required: 'Este campo é obrigatório.',
                                     onChange: handleImgLinkChange // Atualiza o link da imagem quando o valor muda
                                 })}  
-                            className={errors.linkImg? 'error' : ''}
+                                className={errors.linkImagem ? 'error' : ''}
                             />
-                            {errors.linkImg && <p className='error-p'>{errors.linkImg.message}</p>}
+                            {errors.linkImagem && <p className='error-p'>{errors.linkImagem.message}</p>}
                         </div>
 
                         {/* Nome do Livro */}
-                        <div style={{marginTop:'60px', display: 'flex',justifyContent:'space-between', gap:'30px'}}> {/*Primeira row*/}
-                            <div className="input" style={{width:'280px'}}>
-                                <label htmlFor="bookName">Nome do Livro</label>
-                                <input type="name" 
-                                    {...register('bookName', { 
+                        <div style={{ marginTop: '60px', display: 'flex', justifyContent: 'space-between', gap: '30px' }}> {/*Primeira row*/}
+                            <div className="input" style={{ width: '280px' }}>
+                                <label htmlFor="nomeLivro">Nome do Livro</label>
+                                <input type="text" 
+                                    {...register('nomeLivro', { 
                                         required: 'Este campo é obrigatório.',
                                     })}  
-                                    className={errors.bookName ? 'error' : ''}
+                                    className={errors.nomeLivro ? 'error' : ''}
                                 />
-                                {errors.bookName && <p className='error-p'>{errors.bookName.message}</p>}
+                                {errors.nomeLivro && <p className='error-p'>{errors.nomeLivro.message}</p>}
                             </div>
 
                             {/* Nome do Autor */}
-                            <div className="input" style={{width:'280px'}}>
-                                <label htmlFor="authorName">Nome do Autor</label>
-                                <input type="name" 
-                                    {...register('authorName', { 
+                            <div className="input" style={{ width: '280px' }}>
+                                <label htmlFor="nomeAutor">Nome do Autor</label>
+                                <input type="text" 
+                                    {...register('nomeAutor', { 
                                         required: 'Este campo é obrigatório.',
                                     })}  
-                                    className={errors.authorName ? 'error' : ''}
+                                    className={errors.nomeAutor ? 'error' : ''}
                                 />
-                                {errors.authorName && <p className='error-p'>{errors.authorName.message}</p>}
+                                {errors.nomeAutor && <p className='error-p'>{errors.nomeAutor.message}</p>}
                             </div>
                         </div>
                                 
-                        <div style={{marginTop:'70px',justifyContent:'space-between', display: 'flex', gap:'30px'}}> {/*Segunda row*/}
+                        <div style={{ marginTop: '70px', justifyContent: 'space-between', display: 'flex', gap: '30px' }}> {/*Segunda row*/}
                             {/* ISBN */}
-                            <div className="input" style={{width:'280px'}}>
+                            <div className="input" style={{ width: '280px' }}>
                                 <label htmlFor="isbn">ISBN</label>
                                 <input
                                     {...register('isbn', { 
@@ -153,36 +200,36 @@ export const EditBook = () => {
                                 {errors.isbn && <p className="error-p">{errors.isbn.message}</p>}
                             </div>
 
-                            {/* Editora*/}
-                            <div className="input" style={{width:'280px'}}>
-                                <label htmlFor="publisher">Editora</label>
-                                <input type="name" 
-                                    {...register('publisher', { 
+                            {/* Editora */}
+                            <div className="input" style={{ width: '280px' }}>
+                                <label htmlFor="editoraLivro">Editora</label>
+                                <input type="text" 
+                                    {...register('editoraLivro', { 
                                         required: 'Este campo é obrigatório.',
                                     })}  
-                                    className={errors.publisher ? 'error' : ''}
+                                    className={errors.editoraLivro ? 'error' : ''}
                                 />
-                                {errors.publisher && <p className='error-p'>{errors.publisher.message}</p>}
+                                {errors.editoraLivro && <p className='error-p'>{errors.editoraLivro.message}</p>}
                             </div>
                         </div>
 
-                        <div style={{marginTop:'64px', display: 'flex', gap:'30px'}}> {/*Terceira row*/}
+                        <div style={{ marginTop: '64px', display: 'flex', gap: '30px' }}> {/*Terceira row*/}
                             {/* Gênero */}
-                            <div style={{ width: '280px', marginTop:'16px' }}>
-                                <select className={`input-select ${errors.genre ? 'error' : ''}`} {...register('genre', { required: 'Selecione um gênero.' })}>
+                            <div style={{ width: '280px', marginTop: '16px' }}>
+                                <select className={`input-select ${errors.generoLivro ? 'error' : ''}`} {...register('generoLivro', { required: 'Selecione um gênero.' })}>
                                     <option value="">Selecione um gênero</option>
                                     <option value="romance">Romance</option>
                                     <option value="terror">Terror</option>
                                     <option value="aventura">Aventura</option>
                                 </select>
-                                {errors.genre && <p className="error-p">{errors.genre.message}</p>}
+                                {errors.generoLivro && <p className="error-p">{errors.generoLivro.message}</p>}
                             </div>
                                     
-                            {/*Botões */}
-                            <div style={{ display:'flex', flexDirection:'column' }}>
-                                <p style={{ marginBottom:'12px', fontFamily:'Inter, sans-serif' , fontSize: '12px', color: '#504f4f', marginLeft:'8px' }}>Selecione um estado:</p>
-                                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', justifyContent: 'center'}}>
-                                    <button type="button" onClick={() =>  stateHandleClick('Novo')}
+                            {/* Botões */}
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <p style={{ marginBottom: '12px', fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#504f4f', marginLeft: '8px' }}>Selecione um estado:</p>
+                                <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', justifyContent: 'center' }}>
+                                    <button type="button" onClick={() => stateHandleClick('Novo')}
                                         style={{
                                             border: '1px solid',
                                             borderColor: '#069C56',
@@ -209,50 +256,50 @@ export const EditBook = () => {
                             </div>
                         </div>
 
-                        <div style={{display: 'flex',justifyContent:'space-between', gap:'30px', marginTop:'20px'}}> {/*Quarta row*/}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '30px', marginTop: '20px' }}> {/*Quarta row*/}
                             {/* Preço */}
-                            <div className="input" style={{width:'280px'}}>
-                                <label htmlFor="price">Preço</label>
-                                <input type="number"  step="0.01"
-                                    {...register('price', { 
+                            <div className="input" style={{ width: '280px' }}>
+                                <label htmlFor="precoLivro">Preço</label>
+                                <input type="number" step="0.01"
+                                    {...register('precoLivro', { 
                                         required: 'Este campo é obrigatório.',
                                         min: { value: 0, message: 'O preço não pode ser negativo.' }
                                     })}  
-                                    className={errors.price ? 'error' : ''}
+                                    className={errors.precoLivro ? 'error' : ''}
                                 />
-                                {errors.price && <p className='error-p'>{errors.price.message}</p>}
+                                {errors.precoLivro && <p className='error-p'>{errors.precoLivro.message}</p>}
                             </div>
                                 
                             {/* Estoque */}
-                            <div className="input" style={{width:'280px'}}>
-                                <label htmlFor="inventory">Estoque</label>
+                            <div className="input" style={{ width: '280px' }}>
+                                <label htmlFor="estoqueLivro">Estoque</label>
                                 <input type="number"
-                                    {...register('inventory', { 
+                                    {...register('estoqueLivro', { 
                                         required: 'Este campo é obrigatório.',
                                         min: { value: 0, message: 'O estoque não pode ser negativo.' }
                                     })}  
-                                className={errors.inventory? 'error' : ''}
+                                    className={errors.estoqueLivro ? 'error' : ''}
                                 />
-                                {errors.inventory && <p className='error-p'>{errors.inventory.message}</p>}
+                                {errors.estoqueLivro && <p className='error-p'>{errors.estoqueLivro.message}</p>}
                             </div>
                         </div>
                         
                         {/* Descrição */}
-                        <div className="input" style={{ height:'130px', marginTop:'70px'}}>
-                            <label htmlFor="description">Descrição</label>
-                            <textarea style={{ height:'180px', padding:'28px 10px 10px', fontSize: '16px', fontFamily: 'Inter, sans-serif' }}
-                                {...register('description', {
+                        <div className="input" style={{ height: '130px', marginTop: '70px' }}>
+                            <label htmlFor="descricaoLivro">Descrição</label>
+                            <textarea style={{ height: '180px', padding: '28px 10px 10px', fontSize: '16px', fontFamily: 'Inter, sans-serif' }}
+                                {...register('descricaoLivro', {
                                 required: 'Este campo é obrigatório.',
                                 })}
-                                className={errors.description ? 'error' : ''}
+                                className={errors.descricaoLivro ? 'error' : ''}
                                 rows="4"
                             />
-                            {errors.description && <p className='error-p'>{errors.description.message}</p>}
+                            {errors.descricaoLivro && <p className='error-p'>{errors.descricaoLivro.message}</p>}
                         </div>
                         
-                        <div style={{display:'flex', gap: '10%', justifyContent:'center'}}>
-                            <button className="submit-button1" style={{marginTop: '20px', height:'40px',width:'240px', borderRadius:'10px'}}>Salvar Alterações</button>
-                            <button className="submit-button2" style={{marginTop: '20px', height:'40px',width:'240px', borderRadius:'10px'}} type="button" >Excluir Livro</button>
+                        <div style={{ display: 'flex', gap: '10%', justifyContent: 'center' }}>
+                            <button className="submit-button1" style={{ marginTop: '20px', height: '40px', width: '240px', borderRadius: '10px' }} name='save' type='submit' onClick={() => setFlag('save')}>Salvar Alterações</button>
+                            <button className="submit-button2" style={{ marginTop: '20px', height: '40px', width: '240px', borderRadius: '10px' }} name='delete' type="submit" onClick={() => setFlag('delete')}>Excluir Livro</button>
                         </div>
                         
                     </form>
@@ -263,4 +310,4 @@ export const EditBook = () => {
     )
 }
 
-export default EditBook
+export default EditBook;

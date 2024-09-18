@@ -19,8 +19,6 @@ export const Home = () => {
     const fetchBooks = (async () => {
       const books = (await getBooks());
       setLivros(books);
-
-      console.log(livros[0]);
     })
 
     fetchBooks();
@@ -39,8 +37,8 @@ export const Home = () => {
       <div className="cards-container" style={{ marginTop: '40px' }}>
         {!livros && <h1 style={{margin:'auto', letterSpacing:'5px'}}>SEM LIVROS CADASTRADOS!</h1>}
         {livros &&
-          livros.map((livro) => {
-            return <Card card={livro} />
+          livros.map((livro, index) => {
+            return <Card key={index} card={livro} />
           })
         }
 

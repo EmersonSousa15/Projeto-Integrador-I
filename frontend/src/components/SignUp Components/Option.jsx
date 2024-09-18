@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa6";
 import { IoBriefcase } from "react-icons/io5";
 //Context
-import { PageChange } from '../../contexts/pageChange';
+import { PageChange } from '../../Context/pageChange';
 import { useContext } from 'react';
 
 const Option = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosArrowRoundForward } from 'react-icons/io';
-import { PageChange } from '../../contexts/pageChange';
+import { PageChange } from '../../Context/pageChange';
 import { userRegister } from '../../services/users/userRegister';
 import { useNavigate } from 'react-router-dom'
 import { RegisterUserInfoLogin, UIUserTelephone, UIUsername } from './UserForm';
@@ -17,7 +17,7 @@ const IndividualForm = () => {
         formData.identity = 'fisica';
         const registerResponse = await userRegister(formData, setChangePage)
         
-        if (registerResponse === 200) {
+        if (registerResponse.code === 200) {
             navigate('/login')
         } else {
             if (registerResponse.code === 'EMAIL_ALREADY_EXISTS') {

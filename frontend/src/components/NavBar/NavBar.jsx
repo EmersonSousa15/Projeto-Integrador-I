@@ -16,6 +16,7 @@ const NavBar = () => {
     const timeoutRef = useRef(null);
     const navigate = useNavigate();
     const {userData} = useUserContext();
+    
 
     const handleMouseEnter = (submenu) => {
         clearTimeout(timeoutRef.current);
@@ -43,6 +44,8 @@ const NavBar = () => {
     const logInClick = () => {
         navigate('/login');
     };
+
+    const isJuridica = userData.identity === 'juridica';
     
     return (
         <div style={{marginTop:'1.5%'}}>  
@@ -69,13 +72,23 @@ const NavBar = () => {
                             <ul className="book-submenu">
                                 <li onClick={() => navigate('/cadastrarlivro')}>Cadastrar Livro</li>
                                 <li onClick={() => navigate('/meuslivros')}>Meus Livros</li>
-                                <li onClick={() => navigate('/minhascompras')}>Minhas Compras</li>
+                                {isJuridica?(
+                                    <li style={{color:'gray', cursor:'default'}}>Meus Pedidos</li>
+                                )
+                                :(
+                                    <li onClick={() => navigate('/minhascompras')}>Meus Pedidos</li>
+                                )}
                                 <li onClick={() => navigate('/minhasvendas')}>Minhas Vendas</li>  
                             </ul>
                         }
                     </div>
 
-                    <CiHeart className="heart" size={33} onClick={heartClick} />
+                    {isJuridica?(
+                        <CiHeart className="heart" style={{color:'gray', cursor:'default'}}size={33}/>
+                    )
+                    :(
+                        <CiHeart className="heart" size={33} onClick={heartClick} />
+                    )}
                     
                     <div 
                         className="submenu-container" 
@@ -83,7 +96,9 @@ const NavBar = () => {
                         onMouseLeave={handleMouseLeave}
                     >
                         <VscAccount size={25} className="account-icon" style={{ color: "#fff" }} />
-                        <p className="welcome">Olá, {userData.nomeUsuario != "" ? userData.nomeUsuario : 'Usuário'}</p>
+                        <p className="welcome">
+                            Olá, {userData.name ? userData.name.split(' ')[0] : 'Usuário'}
+                        </p>
                         {activeSubMenu === 'account' &&
                             <ul className="submenu">
                                 <li onClick={logInClick}><span>Log in</span></li>
@@ -94,8 +109,13 @@ const NavBar = () => {
                         <FaChevronDown className="chevron"/>
                     </div>
 
+                    {isJuridica?(
+                        <BsCart3 className="cart-icon" style={{color:'gray', cursor:'default'}} size={25} />
+                    )
+                    :(
+                        <BsCart3 className="cart-icon" size={25} onClick={() => navigate('/carrinho')} />
+                    )}
                     
-                    <BsCart3 className="cart-icon" size={25} onClick={() => navigate('/carrinho')} />
                 </div>
             </header>
         </div>

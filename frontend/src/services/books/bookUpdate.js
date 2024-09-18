@@ -1,8 +1,11 @@
 import httpCliente from '../httpCliente';
 
-export const userRegister = async (data) => {
+export const bookUpdate = async (data) => {
     try {
-        const response = await httpCliente.post('http://127.0.0.1:5000/register', {
+
+        console.log(data);
+        
+        const response = await httpCliente.post('http://127.0.0.1:5000/editarlivro', {
             ...data
         })
 

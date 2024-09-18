@@ -11,7 +11,6 @@ export const Login = () => {
   const { register, handleSubmit, formState: { errors }, trigger, watch, control, setError } = useForm();
   const navigate = useNavigate();
   const {userData, updateUserData} = useUserContext();
-  console.log(userData);
   
 
   /*arrow function*/
@@ -26,11 +25,13 @@ export const Login = () => {
   /* Printa no console os dados enviados */
   const onSubmit = async (data) => {
     const response = await userLogin(data);
-
+    
 
     if (response.code === 200) {
-      updateUserData(response.data.user_data);
+      updateUserData(response.data.data);
+      console.log(userData);
       navigate('/');
+      
     } else if(response.code === 404) {
       setError('email', {type: response.code, message: response.message})
     }else if(response.code === 401) {

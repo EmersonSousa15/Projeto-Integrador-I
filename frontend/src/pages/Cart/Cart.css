@@ -1,9 +1,10 @@
 .cart-container{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin: auto;
     background: #E5ECE9;
-    height: 100%;   
+    height: 100vh;   
 }
 
 .cart-container .cart-content{

@@ -6,47 +6,48 @@ import './Card.css';
 const Card = ({ card }) => {
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
+    console.log(card);
+    
 
-    // useEffect para verificar se o card já está nos favoritos quando o componente é montado
     useEffect(() => {
         const favoritos = JSON.parse(window.localStorage.getItem('Favoritos')) || [];
-        const cardExists = favoritos.some(fav => fav.idUsuario === card.idUsuario);
-        if (cardExists) {
-            setIsFavorite(true); // Define o estado como true se o card já for favorito
-        }
-    }, [card.idUsuario]);
+        
 
-    // Função para adicionar/remover favoritos e sincronizar com o localStorage
+        const cardExists = favoritos.some(fav => fav.idLivro === card.idLivro);
+        
+        if (cardExists) {
+            setIsFavorite(true)
+        } else {
+            setIsFavorite(false)
+        }
+    }, [card.idLivro])
+
     const toggleFavorite = () => {
         let favoritos = JSON.parse(window.localStorage.getItem('Favoritos')) || [];
 
         if (!isFavorite) {
-            // Se o card não for favorito, adiciona
-            const cardExists = favoritos.some(fav => fav.idUsuario === card.idUsuario);
+    
+            const cardExists = favoritos.some(fav => fav.idLivro === card.idLivro);
             if (!cardExists) {
                 favoritos.push(card);
                 window.localStorage.setItem('Favoritos', JSON.stringify(favoritos));
-                setIsFavorite(true); // Atualiza o estado para favorito
+                setIsFavorite(true)
             }
         } else {
-            // Se o card for favorito, remove
-            const updatedFavoritos = favoritos.filter(fav => fav.idUsuario !== card.idUsuario);
+    
+            const updatedFavoritos = favoritos.filter(fav => fav.idLivro !== card.idLivro);
             window.localStorage.setItem('Favoritos', JSON.stringify(updatedFavoritos));
-            setIsFavorite(false); // Atualiza o estado para não favorito
+            setIsFavorite(false)
         }
     };
 
-    const handleClick = () => {
-        navigate(`/livro/${card.idLivro}`); // Navega para a página do livro clicado
-    }
-
     return (
-        <div className="card-container" onClick={() => handleClick()}>
+        <div className="card-container">
             <img 
                 className="book-image" 
                 src={card.linkImagem} 
                 alt={card.nomeLivro} 
-                onClick={() => navigate(`/${card.idLivro}`)}
+                onClick={() => navigate(`/livro/${card.idLivro}`)}
             />
             <div className="book-info">
                 <div className="book-data">

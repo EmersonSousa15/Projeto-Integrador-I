@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Banner from '../../assets/LivrosCaindo.png'
 import LogoBook from "../../assets/LogoBook.svg";
 //Context
-import { PageChange } from "../../contexts/pageChange";
+import { PageChange } from "../../Context/pageChange";
 import CorporateForm from "../../components/SignUp Components/CorporateForm";
 import IndividualForm from "../../components/SignUp Components/IndividualForm";
 import Option from "../../components/SignUp Components/Option";

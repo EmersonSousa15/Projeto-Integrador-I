@@ -4,17 +4,20 @@ import EditCard from "../EditCard/EditCard";
 import "./CardContainer.css"
 
 const CardsContainer = ({ cards, option }) => {
+
+    console.log(cards);
+    
     return (
         <div className="book-container-group">
-                <div className="cards-group">
-                    {cards.map((card, cardIndex) => (
-                        option === 1 ? (
-                            <Card key={cardIndex} card={card} />
-                        ) : (
-                            <EditCard key={cardIndex} card={card} />
-                        )
-                    ))}
-                </div>
+            <div className="cards-group">
+                {cards.map((card, cardIndex) => (
+                    option === 1 ? (
+                        <Card key={cardIndex} card={card} />
+                    ) : (
+                        <EditCard key={cardIndex} card={card} />
+                    )
+                ))}
+            </div>
         </div>
     );
 };

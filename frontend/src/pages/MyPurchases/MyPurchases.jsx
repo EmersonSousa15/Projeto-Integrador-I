@@ -33,6 +33,9 @@ const MyPurchases = () => {
             } else {
                 setItems([]); // Set to an empty array if there are no purchases
             }
+
+            console.log(items[0].livros);
+            
         };
 
         fetchPurchases();
@@ -87,7 +90,7 @@ const MyPurchases = () => {
                             </div>
 
                             <div className={`mypurchases-details ${openItems.includes(index) ? 'open' : ''}`}>
-                                {items[0].livros.map((livro, livroIndex) => (
+                                {item.livros.map((livro, livroIndex) => (
                                     <div key={livroIndex} className="mypurchases-products">
                                         <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
                                             <img 

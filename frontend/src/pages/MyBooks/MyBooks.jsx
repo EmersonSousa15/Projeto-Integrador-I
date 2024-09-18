@@ -35,9 +35,10 @@ export const MyBooks = () => {
 
   return (
     <div className="fav-container">
-      <NavBar />
-      <img src={Banner} alt="Minhas vendas" className="banner" />
-      <CardsContainer cards={livros} option={0}/>
+      <div className="banner">
+        <NavBar />
+      </div>
+      <CardsContainer cards={livros} option={0} />
       <img src={Footer} alt="footer" />
     </div>
 

@@ -1,1 +1,1 @@
-![Modelo Entidade-Relacionamento](caminho/para/MER.png)
+![Modelo Entidade-Relacionamento](caminho/para/MER.jpg)
